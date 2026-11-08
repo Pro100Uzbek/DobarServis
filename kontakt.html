@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="cnr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kontakt — Dobar Servis</title>
+  <meta name="description" content="Kontaktirajte Dobar Servis. Telefon: +382 67 163 499. WhatsApp, Telegram, Viber. Pokrivamo cijelu Crnu Goru od Ulcinja do Herceg Novog." />
+  <meta name="theme-color" content="#0B1F4B" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { brand: { dark: '#0B1F4B', blue: '#1E74BB', light: '#E8F1F8' } } } } }
+  </script>
+  <script src="https://unpkg.com/lucide@0.469.0"></script>
+</head>
+<body class="bg-white font-sans text-slate-900 antialiased pt-16 lg:pt-20 pb-20 lg:pb-0">
+
+  <!-- HEADER -->
+  <header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between gap-4 lg:h-20">
+        <a href="index.html" class="flex shrink-0 items-center gap-3 group" aria-label="Dobar Servis — početna stranica">
+          <span class="grid h-10 w-10 place-items-center rounded-lg bg-brand-dark text-white shadow-md group-hover:bg-brand-blue transition-colors">
+            <i data-lucide="snowflake" class="h-6 w-6"></i>
+          </span>
+          <span class="leading-tight">
+            <span class="block text-base font-extrabold tracking-wide text-brand-dark sm:text-lg">DOBAR SERVIS <span class="text-xs font-bold text-slate-500">D.O.O.</span></span>
+            <span class="block text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500 sm:text-[11px]">Tehnički Servis Crna Gora</span>
+          </span>
+        </a>
+        <nav class="hidden items-center gap-1 lg:flex" aria-label="Glavna navigacija">
+          <a href="index.html" class="rounded-md px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-brand-dark">O nama</a>
+          <a href="kucni-aparati.html" class="rounded-md px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-brand-dark">Kućni aparati</a>
+          <a href="horeca.html" class="rounded-md px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-brand-dark">HoReCa</a>
+          <a href="odrzavanje-vila.html" class="rounded-md px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-brand-dark">Vile i Objekti</a>
+          <a href="kontakt.html" class="rounded-md px-3 py-2 text-sm font-bold text-brand-blue bg-slate-50">Kontakt</a>
+        </nav>
+        <div class="hidden items-center gap-4 lg:flex">
+          <button type="button" data-service="general" class="js-open-modal inline-flex items-center gap-2 rounded-lg bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-brand-dark">
+            <i data-lucide="wrench" class="h-4 w-4"></i> Prijavi kvar
+          </button>
+        </div>
+        <button id="mobile-menu-btn" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition hover:bg-slate-50 lg:hidden" aria-expanded="false">
+          <i data-lucide="menu" class="h-5 w-5" data-menu-icon="open"></i>
+          <i data-lucide="x" class="hidden h-5 w-5" data-menu-icon="close"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white lg:hidden shadow-lg absolute w-full">
+      <div class="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6">
+        <a href="index.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">O nama</a>
+        <a href="kucni-aparati.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">Kućni aparati</a>
+        <a href="horeca.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">HoReCa</a>
+        <a href="odrzavanje-vila.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">Vile i Objekti</a>
+        <a href="kontakt.html" class="block rounded-lg bg-slate-50 px-3 py-2.5 text-sm font-bold text-brand-blue">Kontakt</a>
+        <div class="border-t border-slate-100 pt-4 mt-2">
+          <button type="button" data-service="general" class="js-open-modal w-full inline-flex items-center justify-center gap-2 rounded-lg bg-brand-blue px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark">
+            <i data-lucide="wrench" class="h-4 w-4"></i> Prijavi kvar
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="relative overflow-hidden bg-brand-dark text-white py-16 lg:py-24">
+      <div class="pointer-events-none absolute inset-0 opacity-[0.05]" style="background-image:linear-gradient(to right,#fff 1px,transparent 1px),linear-gradient(to bottom,#fff 1px,transparent 1px);background-size:64px 64px;"></div>
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">Kontaktirajte Dobar Servis</h1>
+        <p class="mt-5 text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
+          Izaberite najbrži način komunikacije. Odgovaramo na pozive i poruke u najkraćem roku.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT BUTTONS -->
+    <section class="py-16 bg-white">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <a href="tel:+38267163499" class="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-brand-blue hover:shadow-md">
+            <div class="h-12 w-12 rounded-full bg-brand-light flex items-center justify-center shrink-0">
+              <i data-lucide="phone" class="h-6 w-6 text-brand-blue"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-slate-500">Telefon</p>
+              <p class="text-xl font-extrabold text-brand-dark">+382 67 163 499</p>
+            </div>
+          </a>
+          <button data-service="general" class="js-open-modal group flex items-center text-left gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-[#25D366] hover:shadow-md">
+            <div class="h-12 w-12 rounded-full bg-[#25D366]/10 flex items-center justify-center shrink-0">
+              <i data-lucide="message-circle" class="h-6 w-6 text-[#25D366]"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-slate-500">WhatsApp</p>
+              <p class="text-xl font-extrabold text-brand-dark">Pišite nam</p>
+            </div>
+          </button>
+          <button data-service="general" class="js-open-modal group flex items-center text-left gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-[#229ED9] hover:shadow-md">
+            <div class="h-12 w-12 rounded-full bg-[#229ED9]/10 flex items-center justify-center shrink-0">
+              <i data-lucide="send" class="h-6 w-6 text-[#229ED9]"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-slate-500">Telegram</p>
+              <p class="text-xl font-extrabold text-brand-dark">Pošaljite poruku</p>
+            </div>
+          </button>
+          <button data-service="general" class="js-open-modal group flex items-center text-left gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-[#7360F2] hover:shadow-md">
+            <div class="h-12 w-12 rounded-full bg-[#7360F2]/10 flex items-center justify-center shrink-0">
+              <i data-lucide="phone-call" class="h-6 w-6 text-[#7360F2]"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-slate-500">Viber</p>
+              <p class="text-xl font-extrabold text-brand-dark">Pozovite ili pišite</p>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GEOGRAPHY & INFO -->
+    <section class="py-16 bg-slate-50 border-t border-slate-200">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12">
+          <div>
+            <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <i data-lucide="map-pin" class="h-5 w-5 text-brand-blue"></i> Geografija usluga
+            </h2>
+            <p class="text-slate-600 leading-relaxed">
+              Pokrivamo sve obalno područje Crne Gore i bližu okolinu:<br><br>
+              <strong>Ulcinj • Bar • Sutomore • Petrovac • Budva • Tivat • Kotor • Herceg Novi • Podgorica</strong> i okolna mjesta prema primorju.
+            </p>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <i data-lucide="building" class="h-5 w-5 text-brand-blue"></i> Podaci o kompaniji
+            </h2>
+            <div class="bg-white rounded-xl border border-slate-200 p-5 text-sm text-slate-600 space-y-2">
+              <p><strong>Puni naziv:</strong> DOBAR SERVIS D.O.O.</p>
+              <p><strong>Adresa:</strong> Šušanjska bb, Bar, Crna Gora</p>
+              <p><strong>PIB:</strong> 03391981</p>
+              <p><strong>IBAN:</strong> ME25-540-0000007300724254</p>
+              <p><strong>SWIFT:</strong> OPPOMEPG (Erste Banka)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div class="lg:col-span-1">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="grid h-8 w-8 place-items-center rounded bg-brand-blue text-white"><i data-lucide="snowflake" class="h-5 w-5"></i></span>
+            <span class="text-base font-extrabold tracking-wide text-white">DOBAR SERVIS D.O.O.</span>
+          </div>
+          <p class="text-sm leading-relaxed mb-4">Profesionalni tehnički servis za kućne aparate, HoReCa opremu i održavanje objekata.</p>
+          <div class="text-xs space-y-1 font-mono text-slate-500">
+            <p>PIB: 03391981</p>
+            <p>IBAN: ME25-540-0000007300724254</p>
+            <p>Šušanjska bb, Bar, Crna Gora</p>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-[0.18em] text-white mb-4">Usluge</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="kucni-aparati.html" class="hover:text-white transition">Servis kućnih aparata</a></li>
+            <li><a href="horeca.html" class="hover:text-white transition">HoReCa &amp; komercijalna oprema</a></li>
+            <li><a href="odrzavanje-vila.html" class="hover:text-white transition">Održavanje vila i objekata</a></li>
+            <li><a href="kontakt.html" class="text-white transition">Kontakt i podrška</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-[0.18em] text-white mb-4">Kontakt</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-center gap-2"><i data-lucide="phone" class="h-4 w-4 text-brand-blue"></i><a href="tel:+38267163499" class="hover:text-white transition">+382 67 163 499</a></li>
+            <li class="flex items-center gap-2"><i data-lucide="mail" class="h-4 w-4 text-brand-blue"></i><a href="mailto:info@dobarservis.com" class="hover:text-white transition">info@dobarservis.com</a></li>
+            <li class="flex items-center gap-2"><i data-lucide="clock" class="h-4 w-4 text-brand-blue"></i><span>Pon–Pet: 08:00–20:00</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-[0.18em] text-white mb-4">Zone usluga</h3>
+          <p class="text-sm leading-relaxed">Ulcinj • Bar • Sutomore • Petrovac • Budva • Tivat • Kotor • Herceg Novi • Podgorica i okolna mjesta prema primorju</p>
+        </div>
+      </div>
+      <div class="mt-12 flex flex-col sm:flex-row items-center justify-between border-t border-slate-800 pt-6 text-xs text-slate-600">
+        <p>© <span id="year">2025</span> Dobar Servis D.O.O. Sva prava zadržana.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE STICKY CTA -->
+  <div class="fixed bottom-0 inset-x-0 z-40 lg:hidden bg-white border-t border-slate-200 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+    <a href="tel:+38267163499" class="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-brand-blue py-3.5 text-sm font-bold text-white shadow-md">
+      <i data-lucide="phone" class="h-5 w-5"></i> Pozovi odmah
+    </a>
+  </div>
+
+  <!-- MODAL -->
+  <div id="contact-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
+    <div data-modal-overlay class="absolute inset-0 bg-slate-900/60 opacity-0 backdrop-blur-sm transition-opacity duration-300"></div>
+    <div class="relative flex min-h-full items-center justify-center overflow-y-auto p-4 sm:p-6">
+      <div data-modal-panel class="relative w-full max-w-md scale-95 rounded-2xl bg-white opacity-0 shadow-2xl transition-all duration-300 overflow-hidden">
+        <div class="bg-slate-50 border-b border-slate-100 p-5 sm:p-6 relative">
+          <button type="button" data-modal-close class="absolute top-4 right-4 grid h-8 w-8 place-items-center rounded-lg text-slate-400 transition hover:bg-slate-200"><i data-lucide="x" class="h-5 w-5"></i></button>
+          <div id="modal-service-badge" class="inline-flex items-center gap-1.5 rounded-md bg-brand-light px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-brand-blue mb-3">
+            <i data-lucide="tag" class="h-3 w-3"></i><span>Opšti upit</span>
+          </div>
+          <h2 class="text-xl font-bold text-slate-900">Izaberite način komunikacije</h2>
+          <p class="mt-1 text-sm leading-relaxed text-slate-500">Bićete preusmjereni na online formular.</p>
+        </div>
+        <div class="p-5 sm:p-6 space-y-2.5">
+          <a id="modal-whatsapp" href="#" target="_blank" class="group flex items-center gap-3 rounded-xl bg-[#25D366] px-4 py-3.5 font-semibold text-white transition hover:bg-[#1EBE5A]">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/20"><i data-lucide="message-circle" class="h-5 w-5"></i></span>
+            <span class="flex-1"><span class="flex items-center justify-between"><span class="text-sm font-bold">WhatsApp</span><span class="text-[10px] bg-white text-[#1EBE5A] px-1.5 py-0.5 rounded font-extrabold uppercase">Najbrži</span></span></span>
+            <i data-lucide="chevron-right" class="h-5 w-5 shrink-0 opacity-70"></i>
+          </a>
+          <a id="modal-telegram" href="#" target="_blank" class="group flex items-center gap-3 rounded-xl bg-[#229ED9] px-4 py-3.5 font-semibold text-white transition hover:bg-[#1C8DBF]">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/20"><i data-lucide="send" class="h-5 w-5"></i></span>
+            <span class="flex-1"><span class="block text-sm font-bold">Telegram</span></span>
+            <i data-lucide="chevron-right" class="h-5 w-5 shrink-0 opacity-70"></i>
+          </a>
+          <a id="modal-viber" href="#" target="_blank" class="group flex items-center gap-3 rounded-xl bg-[#7360F2] px-4 py-3.5 font-semibold text-white transition hover:bg-[#6350E0]">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/20"><i data-lucide="phone-call" class="h-5 w-5"></i></span>
+            <span class="flex-1"><span class="block text-sm font-bold">Viber</span></span>
+            <i data-lucide="chevron-right" class="h-5 w-5 shrink-0 opacity-70"></i>
+          </a>
+          <div class="relative py-2"><div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200"></div></div><div class="relative flex justify-center"><span class="bg-white px-2 text-xs font-medium text-slate-400">ili</span></div></div>
+          <a href="tel:+38267163499" class="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5 font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-slate-100 text-brand-dark"><i data-lucide="phone" class="h-5 w-5"></i></span>
+            <span class="flex-1"><span class="block text-sm font-bold">Pozovite dispečera</span><span class="block text-[11px] font-medium text-slate-500 mt-0.5">+382 67 163 499</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      let CURRENT_LANG = 'me';
+      let currentService = 'general';
+      const SERVICE_LABELS = { 'general': 'Opšti upit', 'urgent': 'Hitna intervencija', 'home': 'Kućni aparati', 'horeca': 'HoReCa oprema', 'facility': 'Vile i objekti' };
+      const MODAL_HOSTS = { whatsapp: 'https://wa.dobarservis.com/', telegram: 'https://tg.dobarservis.com/', viber: 'https://viber.dobarservis.com/' };
+
+      const menuBtn = document.getElementById('mobile-menu-btn'), mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = menuBtn.querySelector('[data-menu-icon="open"]'), iconClose = menuBtn.querySelector('[data-menu-icon="close"]');
+      const setMenu = (isOpen) => { mobileMenu.classList.toggle('hidden', !isOpen); iconOpen.classList.toggle('hidden', isOpen); iconClose.classList.toggle('hidden', !isOpen); };
+      menuBtn.addEventListener('click', () => setMenu(mobileMenu.classList.contains('hidden')));
+
+      const modal = document.getElementById('contact-modal'), overlay = modal.querySelector('[data-modal-overlay]'), panel = modal.querySelector('[data-modal-panel]');
+      const serviceBadge = document.getElementById('modal-service-badge').querySelector('span');
+      const channelLinks = { whatsapp: document.getElementById('modal-whatsapp'), telegram: document.getElementById('modal-telegram'), viber: document.getElementById('modal-viber') };
+
+      function updateModalLinks() {
+        const query = '?service=' + encodeURIComponent(currentService) + '&lang=' + encodeURIComponent(CURRENT_LANG);
+        Object.keys(channelLinks).forEach(key => { if (channelLinks[key]) channelLinks[key].href = MODAL_HOSTS[key] + query; });
+      }
+
+      function openModal(service) {
+        currentService = service || 'general';
+        serviceBadge.textContent = SERVICE_LABELS[currentService] || SERVICE_LABELS['general'];
+        updateModalLinks();
+        modal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+        requestAnimationFrame(() => { overlay.classList.replace('opacity-0', 'opacity-100'); panel.classList.replace('opacity-0', 'opacity-100'); panel.classList.replace('scale-95', 'scale-100'); });
+      }
+
+      function closeModal() {
+        modal.setAttribute('aria-hidden', 'true'); document.body.classList.remove('overflow-hidden');
+        overlay.classList.replace('opacity-100', 'opacity-0'); panel.classList.replace('opacity-100', 'opacity-0'); panel.classList.replace('scale-100', 'scale-95');
+        setTimeout(() => modal.classList.add('hidden'), 280);
+      }
+
+      document.addEventListener('click', event => {
+        const opener = event.target.closest('.js-open-modal');
+        if (opener) { event.preventDefault(); openModal(opener.dataset.service); }
+      });
+      overlay.addEventListener('click', closeModal);
+      modal.querySelectorAll('[data-modal-close]').forEach(el => el.addEventListener('click', closeModal));
+
+      setMenu(false);
+    });
+  </script>
+</body>
+</html>

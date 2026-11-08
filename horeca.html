@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="cnr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HoReCa servis — Popravka opreme za ugostiteljstvo | Dobar Servis</title>
+  <meta name="description" content="Hitne popravke i redovno održavanje rashladnih vitrina, ledomata i kuhinjskih linija za restorane i hotele. Zapisnik o defektaži, prioritetni izlasci. ☎ +382 67 163 499" />
+  <meta name="theme-color" content="#0B1F4B" />
+  <meta property="og:title" content="HoReCa servis — Popravka opreme za ugostiteljstvo | Dobar Servis" />
+  <meta property="og:description" content="Hitne popravke i redovno održavanje opreme za restorane i hotele. Zapisnik o defektaži, prioritetni izlasci." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dobarservis.com/horeca.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=80" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "HoReCa servis i održavanje",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Dobar Servis D.O.O.",
+      "telephone": "+38267163499"
+    },
+    "areaServed": ["Ulcinj","Bar","Sutomore","Petrovac","Budva","Tivat","Kotor","Herceg Novi","Podgorica"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { brand: { dark: '#0B1F4B', blue: '#1E74BB', light: '#E8F1F8' } } } } }
+  </script>
+  <script src="https://unpkg.com/lucide@0.469.0"></script>
+</head>
+<body class="bg-white font-sans text-slate-900 antialiased pt-16 lg:pt-20 pb-20 lg:pb-0">
+
+  <!-- HEADER -->
+  <header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between gap-4 lg:h-20">
+        <a href="index.html" class="flex shrink-0 items-center gap-3 group">
+          <span class="grid h-10 w-10 place-items-center rounded-lg bg-brand-dark text-white shadow-md group-hover:bg-brand-blue transition-colors"><i data-lucide="snowflake" class="h-6 w-6"></i></span>
+          <span class="leading-tight"><span class="block text-base font-extrabold tracking-wide text-brand-dark sm:text-lg">DOBAR SERVIS <span class="text-xs font-bold text-slate-500">D.O.O.</span></span><span class="block text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500 sm:text-[11px]">Tehnički Servis Crna Gora</span></span>
+        </a>
+        <nav class="hidden items-center gap-1 lg:flex">
+          <a href="index.html#o-nama" class="rounded-md px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-brand-dark">O nama</a>
+          <a href="kucni-aparati.html" class="rounded-md px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-brand-dark">Kućni aparati</a>
+          <a href="horeca.html" class="rounded-md px-3 py-2 text-sm font-bold text-brand-blue bg-slate-50">HoReCa</a>
+          <a href="odrzavanje-vila.html" class="rounded-md px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-brand-dark">Vile i Objekti</a>
+          <a href="kontakt.html" class="rounded-md px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-brand-dark">Kontakt</a>
+        </nav>
+        <div class="hidden items-center gap-4 lg:flex">
+          <button type="button" data-service="horeca" class="js-open-modal inline-flex items-center gap-2 rounded-lg bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-brand-dark"><i data-lucide="wrench" class="h-4 w-4"></i> Zahtev za servis</button>
+        </div>
+        <button id="mobile-menu-btn" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition hover:bg-slate-50 lg:hidden" aria-expanded="false"><i data-lucide="menu" class="h-5 w-5" data-menu-icon="open"></i><i data-lucide="x" class="hidden h-5 w-5" data-menu-icon="close"></i></button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white lg:hidden shadow-lg absolute w-full">
+      <div class="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6">
+        <a href="index.html#o-nama" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">O nama</a>
+        <a href="kucni-aparati.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">Kućni aparati</a>
+        <a href="horeca.html" class="block rounded-lg bg-slate-50 px-3 py-2.5 text-sm font-bold text-brand-blue">HoReCa</a>
+        <a href="odrzavanje-vila.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">Vile i Objekti</a>
+        <a href="kontakt.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">Kontakt</a>
+        <div class="flex items-center justify-between gap-3 border-t border-slate-100 pt-4 mt-2">
+          <button type="button" data-service="horeca" class="js-open-modal w-full inline-flex items-center justify-center gap-2 rounded-lg bg-brand-blue px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark"><i data-lucide="wrench" class="h-4 w-4"></i> Zahtev za servis</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="relative overflow-hidden bg-brand-dark text-white py-16 lg:py-24">
+      <div class="pointer-events-none absolute inset-0 opacity-[0.05]" style="background-image:linear-gradient(to right,#fff 1px,transparent 1px),linear-gradient(to bottom,#fff 1px,transparent 1px);background-size:64px 64px;"></div>
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <span class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/60 px-4 py-1.5 text-xs font-semibold text-slate-300">
+              <i data-lucide="briefcase" class="h-4 w-4 text-brand-blue"></i> Za restorane, hotele i barove • B2B tehnička podrška
+            </span>
+            <h1 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">Vaša kuhinja i šank ne smiju stati u sred sezone</h1>
+            <p class="mt-5 text-lg text-slate-300 leading-relaxed max-w-2xl">Hitne popravke i preventivno održavanje profesionalne ugostiteljske opreme. Rashladne komore i vitrine, ledomati, točionici i linije za kuvanje. Ugovori za pravna lica, bezgotovinsko plaćanje, zapisnici o defektaži i prioritetni izlasci na primorju i u Podgorici.</p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-3">
+              <button type="button" data-service="horeca" class="js-open-modal inline-flex items-center justify-center gap-2 rounded-xl bg-brand-blue px-6 py-3.5 text-base font-semibold text-white shadow-xl transition hover:bg-blue-500">
+                <i data-lucide="clipboard-list" class="h-5 w-5"></i> Zatražite ponudu za održavanje
+              </button>
+              <button type="button" data-service="urgent" class="js-open-modal inline-flex items-center justify-center gap-2 rounded-xl border border-slate-600 bg-slate-800/40 px-6 py-3.5 text-base font-semibold text-white transition hover:border-slate-400 hover:bg-slate-700">
+                <i data-lucide="siren" class="h-5 w-5"></i> Hitna intervencija
+              </button>
+            </div>
+          </div>
+          <div class="relative hidden lg:block">
+            <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
+              <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1000&q=80" alt="Profesionalna kuhinja" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="py-16 sm:py-20 bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl font-extrabold text-slate-900 sm:text-3xl">Oprema koju servisiramo</h2>
+          <p class="mt-4 text-slate-600 max-w-2xl mx-auto">Vršimo popravku i preventivno održavanje svega što je potrebno za rad restorana, hotela i barova.</p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col">
+            <i data-lucide="snowflake" class="h-10 w-10 text-brand-blue mb-4"></i>
+            <h3 class="text-lg font-bold text-slate-900">Rashladne vitrine, stolovi i komore</h3>
+            <p class="mt-2 text-sm text-slate-600 flex-1">Popravka rashladnih sistema, zamjena kompresora, dopuna freona, kontrola isparivača i digitalnih termostata (Dixell, Eliwell).</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col">
+            <i data-lucide="beer" class="h-10 w-10 text-brand-blue mb-4"></i>
+            <h3 class="text-lg font-bold text-slate-900">Ledomati i šank oprema</h3>
+            <p class="mt-2 text-sm text-slate-600 flex-1">Servis ledomata svih kapaciteta (Brema, Scotsman i dr.), popravka točionika piva, kontrola CO2 instalacija i rashladnih kada.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col">
+            <i data-lucide="flame" class="h-10 w-10 text-brand-blue mb-4"></i>
+            <h3 class="text-lg font-bold text-slate-900">Termička oprema i peći</h3>
+            <p class="mt-2 text-sm text-slate-600 flex-1">Dijagnostika i popravka parokonvekcijskih peći (Rational, Unox), električnih šporeta, friteza, roštilja i toplih kupki.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col">
+            <i data-lucide="utensils" class="h-10 w-10 text-brand-blue mb-4"></i>
+            <h3 class="text-lg font-bold text-slate-900">Profesionalno pranje sudova i čaša</h3>
+            <p class="mt-2 text-sm text-slate-600 flex-1">Industrijske mašine za pranje, zamjena pumpi pritiska, dozatora hemije, grijača i uklanjanje kamenca.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KAKO FUNKCIONIŠE SARADNJA -->
+    <section class="bg-slate-50 py-16 border-y border-slate-200">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl font-bold text-slate-900">Kako funkcioniše saradnja?</h2>
+          <p class="mt-4 text-slate-600 max-w-2xl mx-auto">Četiri jednostavna koraka do pouzdano servisirane opreme.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+          <div class="relative flex flex-col items-center bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="h-12 w-12 rounded-full bg-white border-2 border-brand-blue text-brand-blue flex items-center justify-center font-bold text-lg mb-4 shadow-sm z-10">1</div>
+            <h3 class="text-base font-bold text-slate-800">Poziv ili prijava</h3>
+            <p class="text-sm text-slate-500 mt-2">Dispečer prima hitan zahtjev ili upit za ugovor.</p>
+          </div>
+          <div class="relative flex flex-col items-center bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="h-12 w-12 rounded-full bg-white border-2 border-slate-300 text-slate-500 flex items-center justify-center font-bold text-lg mb-4 shadow-sm z-10">2</div>
+            <h3 class="text-base font-bold text-slate-800">Izlazak i defektaža</h3>
+            <p class="text-sm text-slate-500 mt-2">Dolazak na objekat, dijagnostika i izrada zapisnika.</p>
+          </div>
+          <div class="relative flex flex-col items-center bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="h-12 w-12 rounded-full bg-white border-2 border-slate-300 text-slate-500 flex items-center justify-center font-bold text-lg mb-4 shadow-sm z-10">3</div>
+            <h3 class="text-base font-bold text-slate-800">Saglasnost i popravka</h3>
+            <p class="text-sm text-slate-500 mt-2">Nabavka industrijskih dijelova i stručna ugradnja.</p>
+          </div>
+          <div class="relative flex flex-col items-center bg-brand-dark p-6 rounded-2xl shadow-md text-white">
+            <div class="h-12 w-12 rounded-full bg-brand-blue text-white flex items-center justify-center mb-4 shadow-md z-10"><i data-lucide="check" class="h-6 w-6"></i></div>
+            <h3 class="text-base font-bold">Račun i garancija</h3>
+            <p class="text-sm text-slate-300 mt-2">Izdavanje fiskalnog računa i garancija do 12 mjeseci.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- B2B BENEFITS -->
+    <section class="py-16 bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-2xl font-extrabold text-slate-900 sm:text-3xl mb-6">Rad sa pravnim licima (D.O.O.)</h2>
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <span class="grid h-10 w-10 place-items-center rounded-lg bg-brand-light text-brand-blue shrink-0">
+                  <i data-lucide="file-text" class="h-5 w-5"></i>
+                </span>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900">Zapisnik o defektaži</h3>
+                  <p class="mt-1 text-sm text-slate-600">Zvaničan tehnički izvještaj sa specifikacijom kvara i dijelova.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="grid h-10 w-10 place-items-center rounded-lg bg-brand-light text-brand-blue shrink-0">
+                  <i data-lucide="receipt" class="h-5 w-5"></i>
+                </span>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900">Bezgotovinsko plaćanje i fiskalni račun</h3>
+                  <p class="mt-1 text-sm text-slate-600">Čista dokumentacija za knjigovodstvo. Virmansko plaćanje.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="grid h-10 w-10 place-items-center rounded-lg bg-brand-light text-brand-blue shrink-0">
+                  <i data-lucide="clock" class="h-5 w-5"></i>
+                </span>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900">Prioritetni izlasci za ugovorne partnere</h3>
+                  <p class="mt-1 text-sm text-slate-600">Minimizacija zastoja u radu lokala tokom ljetnje sezone.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="grid h-10 w-10 place-items-center rounded-lg bg-brand-light text-brand-blue shrink-0">
+                  <i data-lucide="calendar-check" class="h-5 w-5"></i>
+                </span>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900">Preventivni pregledi prije sezone</h3>
+                  <p class="mt-1 text-sm text-slate-600">Provjera svih sistema prije otvaranja, kako biste izbjegli neplanirane kvarove.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 shadow-sm relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mr-8 -mt-8 h-32 w-32 rounded-full bg-brand-blue/10 blur-2xl"></div>
+            <h3 class="text-lg font-bold text-slate-900 mb-4">Garancija i dokumentacija</h3>
+            <p class="text-sm text-slate-600 mb-6">Svaka intervencija završava se izdavanjem fiskalnog računa i zvanične garancije. Radimo u skladu sa zakonima Crne Gore.</p>
+            <div class="space-y-3">
+              <div class="flex items-center gap-2 text-sm font-medium text-slate-700 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+                <i data-lucide="shield-check" class="h-4 w-4 text-brand-blue"></i> Garancija do 12 mjeseci
+              </div>
+              <div class="flex items-center gap-2 text-sm font-medium text-slate-700 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+                <i data-lucide="file-check" class="h-4 w-4 text-brand-blue"></i> Zapisnik o defektaži
+              </div>
+              <div class="flex items-center gap-2 text-sm font-medium text-slate-700 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+                <i data-lucide="credit-card" class="h-4 w-4 text-brand-blue"></i> Virmansko plaćanje
+              </div>
+            </div>
+            <div class="mt-6 pt-6 border-t border-slate-200">
+               <button type="button" data-service="horeca" class="js-open-modal w-full inline-flex items-center justify-center gap-2 rounded-lg bg-brand-blue px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-dark">
+                <i data-lucide="phone" class="h-4 w-4"></i> Kontaktirajte nas za ugovor
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div class="lg:col-span-1">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="grid h-8 w-8 place-items-center rounded bg-brand-blue text-white"><i data-lucide="snowflake" class="h-5 w-5"></i></span>
+            <span class="text-base font-extrabold tracking-wide text-white">DOBAR SERVIS D.O.O.</span>
+          </div>
+          <p class="text-sm leading-relaxed mb-4">Profesionalni tehnički servis za kućne aparate, HoReCa opremu i održavanje objekata.</p>
+          <div class="text-xs space-y-1 font-mono text-slate-500">
+            <p>PIB: 03391981</p>
+            <p>IBAN: ME25-540-0000007300724254</p>
+            <p>SWIFT: OPPOMEPG (Erste Banka)</p>
+            <p>Šušanjska bb, Bar, Crna Gora</p>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-[0.18em] text-white mb-4">Usluge</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="kucni-aparati.html" class="hover:text-white transition">Servis kućnih aparata</a></li>
+            <li><a href="horeca.html" class="text-white transition">HoReCa &amp; komercijalna oprema</a></li>
+            <li><a href="odrzavanje-vila.html" class="hover:text-white transition">Održavanje vila i objekata</a></li>
+            <li><a href="kontakt.html" class="hover:text-white transition">Kontakt i podrška</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-[0.18em] text-white mb-4">Kontakt</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-center gap-2"><i data-lucide="phone" class="h-4 w-4 text-brand-blue"></i><a href="tel:+38267163499" class="hover:text-white transition">+382 67 163 499</a></li>
+            <li class="flex items-center gap-2"><i data-lucide="mail" class="h-4 w-4 text-brand-blue"></i><a href="mailto:info@dobarservis.com" class="hover:text-white transition">info@dobarservis.com</a></li>
+            <li class="flex items-center gap-2"><i data-lucide="clock" class="h-4 w-4 text-brand-blue"></i><span>Pon–Pet: 08:00–20:00</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="user" class="h-4 w-4 text-brand-blue"></i><span>Direktor: Aleksei Beliaev</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-[0.18em] text-white mb-4">Zone usluga</h3>
+          <p class="text-sm leading-relaxed">Ulcinj • Bar • Sutomore • Petrovac • Budva • Tivat • Kotor • Herceg Novi • Podgorica i okolna mjesta prema primorju</p>
+        </div>
+      </div>
+      <div class="mt-12 flex flex-col sm:flex-row items-center justify-between border-t border-slate-800 pt-6 text-xs text-slate-600">
+        <p>© <span id="year">2025</span> Dobar Servis D.O.O. Sva prava zadržana.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE STICKY CTA -->
+  <div class="fixed bottom-0 inset-x-0 z-40 lg:hidden bg-white border-t border-slate-200 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+    <button type="button" data-service="horeca" class="js-open-modal w-full inline-flex items-center justify-center gap-2 rounded-lg bg-brand-blue py-3.5 text-sm font-bold text-white shadow-md"><i data-lucide="clipboard-list" class="h-5 w-5"></i> Zahtev za servis</button>
+  </div>
+
+  <!-- MODAL -->
+  <div id="contact-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
+    <div data-modal-overlay class="absolute inset-0 bg-slate-900/60 opacity-0 backdrop-blur-sm transition-opacity duration-300"></div>
+    <div class="relative flex min-h-full items-center justify-center overflow-y-auto p-4 sm:p-6">
+      <div data-modal-panel class="relative w-full max-w-md scale-95 rounded-2xl bg-white opacity-0 shadow-2xl transition-all duration-300 overflow-hidden">
+        <div class="bg-slate-50 border-b border-slate-100 p-5 sm:p-6 relative">
+          <button type="button" data-modal-close class="absolute top-4 right-4 grid h-8 w-8 place-items-center rounded-lg text-slate-400 transition hover:bg-slate-200"><i data-lucide="x" class="h-5 w-5"></i></button>
+          <div id="modal-service-badge" class="inline-flex items-center gap-1.5 rounded-md bg-brand-light px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-brand-blue mb-3"><i data-lucide="tag" class="h-3 w-3"></i><span>Opšti upit</span></div>
+          <h2 class="text-xl font-bold text-slate-900">Izaberite način komunikacije</h2>
+          <p class="mt-1 text-sm leading-relaxed text-slate-500">Bićete preusmjereni na online formular.</p>
+        </div>
+        <div class="p-5 sm:p-6 space-y-2.5">
+          <a id="modal-whatsapp" href="#" target="_blank" class="group flex items-center gap-3 rounded-xl bg-[#25D366] px-4 py-3.5 font-semibold text-white transition hover:bg-[#1EBE5A]"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/20"><i data-lucide="message-circle" class="h-5 w-5"></i></span><span class="flex-1"><span class="flex items-center justify-between"><span class="text-sm font-bold">WhatsApp</span><span class="text-[10px] bg-white text-[#1EBE5A] px-1.5 py-0.5 rounded font-extrabold uppercase">Najbrži</span></span></span><i data-lucide="chevron-right" class="h-5 w-5 shrink-0 opacity-70"></i></a>
+          <a id="modal-telegram" href="#" target="_blank" class="group flex items-center gap-3 rounded-xl bg-[#229ED9] px-4 py-3.5 font-semibold text-white transition hover:bg-[#1C8DBF]"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/20"><i data-lucide="send" class="h-5 w-5"></i></span><span class="flex-1"><span class="block text-sm font-bold">Telegram</span></span><i data-lucide="chevron-right" class="h-5 w-5 shrink-0 opacity-70"></i></a>
+          <a id="modal-viber" href="#" target="_blank" class="group flex items-center gap-3 rounded-xl bg-[#7360F2] px-4 py-3.5 font-semibold text-white transition hover:bg-[#6350E0]"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/20"><i data-lucide="phone-call" class="h-5 w-5"></i></span><span class="flex-1"><span class="block text-sm font-bold">Viber</span></span><i data-lucide="chevron-right" class="h-5 w-5 shrink-0 opacity-70"></i></a>
+          <div class="relative py-2"><div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200"></div></div><div class="relative flex justify-center"><span class="bg-white px-2 text-xs font-medium text-slate-400">ili</span></div></div>
+          <a href="tel:+38267163499" class="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5 font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-slate-100 text-brand-dark"><i data-lucide="phone" class="h-5 w-5"></i></span><span class="flex-1"><span class="block text-sm font-bold">Pozovite dispečera</span><span class="block text-[11px] font-medium text-slate-500 mt-0.5">+382 67 163 499</span></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+      document.getElementById('year').textContent = new Date().getFullYear();
+      let CURRENT_LANG = 'me'; let currentService = 'general';
+      const SERVICE_LABELS = { 'general': 'Opšti upit', 'urgent': 'Hitna intervencija', 'home': 'Kućni aparati', 'horeca': 'HoReCa oprema', 'facility': 'Vile i objekti' };
+      const MODAL_HOSTS = { whatsapp: 'https://wa.dobarservis.com/', telegram: 'https://tg.dobarservis.com/', viber: 'https://viber.dobarservis.com/' };
+      const menuBtn = document.getElementById('mobile-menu-btn'), mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = menuBtn.querySelector('[data-menu-icon="open"]'), iconClose = menuBtn.querySelector('[data-menu-icon="close"]');
+      const setMenu = (isOpen) => { mobileMenu.classList.toggle('hidden', !isOpen); iconOpen.classList.toggle('hidden', isOpen); iconClose.classList.toggle('hidden', !isOpen); };
+      menuBtn.addEventListener('click', () => setMenu(mobileMenu.classList.contains('hidden')));
+      const modal = document.getElementById('contact-modal'), overlay = modal.querySelector('[data-modal-overlay]'), panel = modal.querySelector('[data-modal-panel]');
+      const serviceBadge = document.getElementById('modal-service-badge').querySelector('span');
+      const channelLinks = { whatsapp: document.getElementById('modal-whatsapp'), telegram: document.getElementById('modal-telegram'), viber: document.getElementById('modal-viber') };
+      function updateModalLinks() { const q = '?service=' + encodeURIComponent(currentService) + '&lang=' + encodeURIComponent(CURRENT_LANG); Object.keys(channelLinks).forEach(k => { if (channelLinks[k]) channelLinks[k].href = MODAL_HOSTS[k] + q; }); }
+      function openModal(service) { currentService = service || 'general'; serviceBadge.textContent = SERVICE_LABELS[currentService] || SERVICE_LABELS['general']; updateModalLinks(); modal.classList.remove('hidden'); document.body.classList.add('overflow-hidden'); requestAnimationFrame(() => { overlay.classList.replace('opacity-0', 'opacity-100'); panel.classList.replace('opacity-0', 'opacity-100'); panel.classList.replace('scale-95', 'scale-100'); }); }
+      function closeModal() { modal.setAttribute('aria-hidden', 'true'); document.body.classList.remove('overflow-hidden'); overlay.classList.replace('opacity-100', 'opacity-0'); panel.classList.replace('opacity-100', 'opacity-0'); panel.classList.replace('scale-100', 'scale-95'); setTimeout(() => modal.classList.add('hidden'), 280); }
+      document.addEventListener('click', event => { const opener = event.target.closest('.js-open-modal'); if (opener) { event.preventDefault(); openModal(opener.dataset.service); } });
+      overlay.addEventListener('click', closeModal); modal.querySelectorAll('[data-modal-close]').forEach(el => el.addEventListener('click', closeModal));
+      setMenu(false);
+    });
+  </script>
+</body>
+</html>
