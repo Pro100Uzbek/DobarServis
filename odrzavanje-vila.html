@@ -20,7 +20,9 @@
     "provider": {
       "@type": "LocalBusiness",
       "name": "Dobar Servis D.O.O.",
-      "telephone": "+38267163499"
+      "telephone": "+38267163499",
+      "email": "info@dobarservis.com",
+      "url": "https://dobarservis.com"
     },
     "areaServed": ["Ulcinj","Bar","Sutomore","Petrovac","Budva","Tivat","Kotor","Herceg Novi","Podgorica"]
   }
@@ -71,7 +73,7 @@
         <div class="hidden items-center gap-4 lg:flex">
           <button type="button" data-service="facility" class="js-open-modal inline-flex items-center gap-2 rounded-lg bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-brand-dark"><i data-lucide="wrench" class="h-4 w-4"></i> Konsultacija</button>
         </div>
-        <button id="mobile-menu-btn" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition hover:bg-slate-50 lg:hidden" aria-expanded="false"><i data-lucide="menu" class="h-5 w-5" data-menu-icon="open"></i><i data-lucide="x" class="hidden h-5 w-5" data-menu-icon="close"></i></button>
+        <button id="mobile-menu-btn" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition hover:bg-slate-50 lg:hidden" aria-expanded="false" aria-controls="mobile-menu"><i data-lucide="menu" class="h-5 w-5" data-menu-icon="open"></i><i data-lucide="x" class="hidden h-5 w-5" data-menu-icon="close"></i></button>
       </div>
     </div>
     <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white lg:hidden shadow-lg absolute w-full">
@@ -274,7 +276,7 @@
 
       const menuBtn = document.getElementById('mobile-menu-btn'), mobileMenu = document.getElementById('mobile-menu');
       const iconOpen = menuBtn.querySelector('[data-menu-icon="open"]'), iconClose = menuBtn.querySelector('[data-menu-icon="close"]');
-      function setMenu(isOpen) { mobileMenu.classList.toggle('hidden', !isOpen); iconOpen.classList.toggle('hidden', isOpen); iconClose.classList.toggle('hidden', !isOpen); menuBtn.setAttribute('aria-expanded', String(isOpen)); }
+      function setMenu(isOpen) { mobileMenu.classList.toggle('hidden', !isOpen); iconOpen.classList.toggle('hidden', isOpen); iconClose.classList.toggle('hidden', !isOpen); menuBtn.setAttribute('aria-expanded', String(isOpen)); menuBtn.setAttribute('aria-expanded', String(isOpen)); }
       menuBtn.addEventListener('click', () => setMenu(mobileMenu.classList.contains('hidden')));
       mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
       window.addEventListener('resize', () => { if (window.innerWidth >= 1024) setMenu(false); });
