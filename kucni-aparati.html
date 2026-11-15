@@ -36,14 +36,22 @@
     tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { brand: { dark: '#0B1F4B', blue: '#1E74BB', light: '#E8F1F8' } } } } }
   </script>
   <script src="https://unpkg.com/lucide@0.469.0"></script>
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TD2M4L53"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  </script>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TD2M4L53');</script>
+  <!-- End Google Tag Manager -->
+  
 </head>
 <body class="bg-white font-sans text-slate-900 antialiased pt-16 lg:pt-20 pb-20 lg:pb-0">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TD2M4L53"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <!-- HEADER -->
   <header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md">
