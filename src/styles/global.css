@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+	--color-brand-dark: #0b1f4b;
+	--color-brand-blue: #1e74bb;
+	--color-brand-light: #e8f1f8;
+}
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+@keyframes marquee2 {
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.animate-marquee {
+	animation: marquee 25s linear infinite;
+}
+
+.animate-marquee2 {
+	animation: marquee2 25s linear infinite;
+}

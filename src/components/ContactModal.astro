@@ -1,0 +1,264 @@
+<div
+	id="contact-modal"
+	class="fixed inset-0 z-[100] hidden"
+	role="dialog"
+	aria-modal="true"
+	aria-labelledby="modal-title"
+	aria-hidden="true"
+>
+	<div
+		data-modal-overlay
+		class="absolute inset-0 bg-slate-900/60 opacity-0 backdrop-blur-sm transition-opacity duration-300"
+	></div>
+	<div class="relative flex min-h-full items-center justify-center overflow-y-auto p-4 sm:p-6">
+		<div
+			data-modal-panel
+			class="relative w-full max-w-md scale-95 rounded-2xl bg-white opacity-0 shadow-2xl transition-all duration-300 overflow-hidden"
+		>
+			<div class="bg-slate-50 border-b border-slate-100 p-5 sm:p-6 relative">
+				<button
+					type="button"
+					data-modal-close
+					aria-label="Zatvori prozor"
+					class="absolute top-4 right-4 grid h-8 w-8 place-items-center rounded-lg text-slate-400 transition hover:bg-slate-200 hover:text-slate-700 focus:outline-none"
+				>
+					<i data-lucide="x" class="h-5 w-5"></i>
+				</button>
+				<div
+					id="modal-service-badge"
+					class="inline-flex items-center gap-1.5 rounded-md bg-brand-light px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-brand-blue mb-3"
+				>
+					<i data-lucide="tag" class="h-3 w-3"></i><span>Opšti upit</span>
+				</div>
+				<h2 id="modal-title" class="text-xl font-bold text-slate-900">
+					Izaberite način komunikacije
+				</h2>
+				<p class="mt-1 text-sm leading-relaxed text-slate-500">
+					Bićete preusmjereni na online formular za prijavu kvara.
+				</p>
+			</div>
+			<div class="p-5 sm:p-6 space-y-2.5">
+				<a
+					id="modal-whatsapp"
+					href="https://wa.dobarservis.com/?service=general&amp;lang=me"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="group flex items-center gap-3 rounded-xl bg-[#25D366] px-4 py-3.5 font-semibold text-white shadow-sm transition hover:bg-[#1EBE5A]"
+				>
+					<span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/20">
+						<i data-lucide="message-circle" class="h-5 w-5"></i>
+					</span>
+					<span class="flex-1">
+						<span class="flex items-center justify-between">
+							<span class="text-sm font-bold">WhatsApp</span>
+							<span
+								class="text-[10px] bg-white text-[#1EBE5A] px-1.5 py-0.5 rounded font-extrabold uppercase"
+								>Najbrži</span
+							>
+						</span>
+						<span class="block text-[11px] font-medium text-white/90 mt-0.5">
+							Otvorite formular u WhatsApp-u
+						</span>
+					</span>
+					<i data-lucide="chevron-right" class="h-5 w-5 shrink-0 opacity-70"></i>
+				</a>
+				<a
+					id="modal-telegram"
+					href="https://tg.dobarservis.com/?service=general&amp;lang=me"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="group flex items-center gap-3 rounded-xl bg-[#229ED9] px-4 py-3.5 font-semibold text-white shadow-sm transition hover:bg-[#1C8DBF]"
+				>
+					<span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/20">
+						<i data-lucide="send" class="h-5 w-5"></i>
+					</span>
+					<span class="flex-1">
+						<span class="block text-sm font-bold leading-tight">Telegram</span>
+						<span class="block text-[11px] font-medium leading-tight text-white/80 mt-0.5">
+							Pošaljite fotografije kvara
+						</span>
+					</span>
+					<i data-lucide="chevron-right" class="h-5 w-5 shrink-0 opacity-70"></i>
+				</a>
+				<a
+					id="modal-viber"
+					href="https://viber.dobarservis.com/?service=general&amp;lang=me"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="group flex items-center gap-3 rounded-xl bg-[#7360F2] px-4 py-3.5 font-semibold text-white shadow-sm transition hover:bg-[#6350E0]"
+				>
+					<span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/20">
+						<i data-lucide="phone-call" class="h-5 w-5"></i>
+					</span>
+					<span class="flex-1">
+						<span class="block text-sm font-bold leading-tight">Viber</span>
+						<span class="block text-[11px] font-medium leading-tight text-white/80 mt-0.5">
+							Poruka ili poziv
+						</span>
+					</span>
+					<i data-lucide="chevron-right" class="h-5 w-5 shrink-0 opacity-70"></i>
+				</a>
+				<div class="relative py-2">
+					<div class="absolute inset-0 flex items-center">
+						<div class="w-full border-t border-slate-200"></div>
+					</div>
+					<div class="relative flex justify-center">
+						<span class="bg-white px-2 text-xs font-medium text-slate-400">ili</span>
+					</div>
+				</div>
+				<a
+					href="tel:+38267163499"
+					class="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5 font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50"
+				>
+					<span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-slate-100 text-brand-dark">
+						<i data-lucide="phone" class="h-5 w-5"></i>
+					</span>
+					<span class="flex-1">
+						<span class="block text-sm font-bold leading-tight">Pozovite dispečera</span>
+						<span class="block text-[11px] font-medium leading-tight text-slate-500 mt-0.5">
+							+382 67 163 499
+						</span>
+					</span>
+					<i data-lucide="chevron-right" class="h-5 w-5 shrink-0 text-slate-400"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const CURRENT_LANG = 'me';
+		let currentService = 'general';
+		const SERVICE_LABELS = {
+			general: 'Opšti upit',
+			urgent: 'Hitna intervencija',
+			home: 'Kućni aparati',
+			horeca: 'HoReCa oprema',
+			facility: 'Vile i objekti',
+		};
+		const MODAL_HOSTS = {
+			whatsapp: 'https://wa.dobarservis.com/',
+			telegram: 'https://tg.dobarservis.com/',
+			viber: 'https://viber.dobarservis.com/',
+		};
+
+		const menuButton = document.getElementById('mobile-menu-btn');
+		const mobileMenu = document.getElementById('mobile-menu');
+		const openIcon = menuButton.querySelector('[data-menu-icon="open"]');
+		const closeIcon = menuButton.querySelector('[data-menu-icon="close"]');
+
+		function setMenu(isOpen) {
+			mobileMenu.classList.toggle('hidden', !isOpen);
+			openIcon.classList.toggle('hidden', isOpen);
+			closeIcon.classList.toggle('hidden', !isOpen);
+			menuButton.setAttribute('aria-expanded', String(isOpen));
+		}
+
+		menuButton.addEventListener('click', () => {
+			setMenu(mobileMenu.classList.contains('hidden'));
+		});
+		mobileMenu.querySelectorAll('a').forEach((link) => {
+			link.addEventListener('click', () => setMenu(false));
+		});
+		window.addEventListener('resize', () => {
+			if (window.innerWidth >= 1024) setMenu(false);
+		});
+
+		const modal = document.getElementById('contact-modal');
+		const overlay = modal.querySelector('[data-modal-overlay]');
+		const panel = modal.querySelector('[data-modal-panel]');
+		const serviceBadge = document.querySelector('#modal-service-badge span');
+		const channelLinks = {
+			whatsapp: document.getElementById('modal-whatsapp'),
+			telegram: document.getElementById('modal-telegram'),
+			viber: document.getElementById('modal-viber'),
+		};
+		let lastFocusedElement = null;
+
+		function updateModalLinks() {
+			const query =
+				'?service=' +
+				encodeURIComponent(currentService) +
+				'&lang=' +
+				encodeURIComponent(CURRENT_LANG);
+
+			Object.entries(MODAL_HOSTS).forEach(([channel, host]) => {
+				channelLinks[channel].href = host + query;
+			});
+		}
+
+		function openModal(service, trigger) {
+			currentService = service || 'general';
+			serviceBadge.textContent = SERVICE_LABELS[currentService] || SERVICE_LABELS.general;
+			updateModalLinks();
+			lastFocusedElement = trigger || document.activeElement;
+			modal.classList.remove('hidden');
+			modal.setAttribute('aria-hidden', 'false');
+			document.body.classList.add('overflow-hidden');
+
+			requestAnimationFrame(() => {
+				overlay.classList.replace('opacity-0', 'opacity-100');
+				panel.classList.replace('opacity-0', 'opacity-100');
+				panel.classList.replace('scale-95', 'scale-100');
+			});
+
+			setTimeout(() => {
+				const focusable = modal.querySelectorAll('a[href], button:not([disabled])');
+				if (focusable.length > 0) focusable[0].focus();
+			}, 300);
+		}
+
+		function closeModal() {
+			if (modal.classList.contains('hidden')) return;
+
+			modal.setAttribute('aria-hidden', 'true');
+			document.body.classList.remove('overflow-hidden');
+			overlay.classList.replace('opacity-100', 'opacity-0');
+			panel.classList.replace('opacity-100', 'opacity-0');
+			panel.classList.replace('scale-100', 'scale-95');
+
+			setTimeout(() => {
+				modal.classList.add('hidden');
+				if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+					lastFocusedElement.focus();
+				}
+			}, 280);
+		}
+
+		modal.addEventListener('keydown', (event) => {
+			if (event.key !== 'Tab') return;
+
+			const focusable = modal.querySelectorAll('a[href], button:not([disabled])');
+			const first = focusable[0];
+			const last = focusable[focusable.length - 1];
+
+			if (event.shiftKey && document.activeElement === first) {
+				event.preventDefault();
+				last.focus();
+			} else if (!event.shiftKey && document.activeElement === last) {
+				event.preventDefault();
+				first.focus();
+			}
+		});
+
+		document.addEventListener('click', (event) => {
+			if (!(event.target instanceof Element)) return;
+
+			const opener = event.target.closest('.js-open-modal');
+			if (!opener) return;
+
+			event.preventDefault();
+			openModal(opener.dataset.service, opener);
+		});
+		overlay.addEventListener('click', closeModal);
+		modal.querySelectorAll('[data-modal-close]').forEach((button) => {
+			button.addEventListener('click', closeModal);
+		});
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+		});
+
+		setMenu(false);
+	});
+</script>
