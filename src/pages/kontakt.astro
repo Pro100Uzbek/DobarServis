@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactModal from '../components/ContactModal.astro';
+---
+
+<Layout title="Kontakt — Dobar Servis" description="Kontaktirajte Dobar Servis. Telefon: +382 67 163 499. WhatsApp, Telegram, Viber. Pokrivamo cijelu Crnu Goru od Ulcinja do Herceg Novog.">
+  <Header />
+<main>
+    <!-- HERO -->
+    <section class="relative overflow-hidden bg-brand-dark text-white py-16 lg:py-24">
+      <div class="pointer-events-none absolute inset-0 opacity-[0.05]" style="background-image:linear-gradient(to right,#fff 1px,transparent 1px),linear-gradient(to bottom,#fff 1px,transparent 1px);background-size:64px 64px;"></div>
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">Kontaktirajte Dobar Servis</h1>
+        <p class="mt-5 text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
+          Izaberite najbrži način komunikacije. Odgovaramo na pozive i poruke u najkraćem roku.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT BUTTONS -->
+    <section class="py-16 bg-white">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <a href="tel:+38267163499" class="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-brand-blue hover:shadow-md">
+            <div class="h-12 w-12 rounded-full bg-brand-light flex items-center justify-center shrink-0">
+              <i data-lucide="phone" class="h-6 w-6 text-brand-blue"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-slate-500">Telefon</p>
+              <p class="text-xl font-extrabold text-brand-dark">+382 67 163 499</p>
+            </div>
+          </a>
+          <button data-service="general" class="js-open-modal group flex items-center text-left gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-[#25D366] hover:shadow-md">
+            <div class="h-12 w-12 rounded-full bg-[#25D366]/10 flex items-center justify-center shrink-0">
+              <i data-lucide="message-circle" class="h-6 w-6 text-[#25D366]"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-slate-500">WhatsApp</p>
+              <p class="text-xl font-extrabold text-brand-dark">Pišite nam</p>
+            </div>
+          </button>
+          <button data-service="general" class="js-open-modal group flex items-center text-left gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-[#229ED9] hover:shadow-md">
+            <div class="h-12 w-12 rounded-full bg-[#229ED9]/10 flex items-center justify-center shrink-0">
+              <i data-lucide="send" class="h-6 w-6 text-[#229ED9]"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-slate-500">Telegram</p>
+              <p class="text-xl font-extrabold text-brand-dark">Pošaljite poruku</p>
+            </div>
+          </button>
+          <button data-service="general" class="js-open-modal group flex items-center text-left gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-[#7360F2] hover:shadow-md">
+            <div class="h-12 w-12 rounded-full bg-[#7360F2]/10 flex items-center justify-center shrink-0">
+              <i data-lucide="phone-call" class="h-6 w-6 text-[#7360F2]"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-slate-500">Viber</p>
+              <p class="text-xl font-extrabold text-brand-dark">Pozovite ili pišite</p>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GEOGRAPHY & INFO -->
+    <section class="py-16 bg-slate-50 border-t border-slate-200">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12">
+          <div>
+            <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <i data-lucide="map-pin" class="h-5 w-5 text-brand-blue"></i> Geografija usluga
+            </h2>
+            <p class="text-slate-600 leading-relaxed">
+              Pokrivamo sve obalno područje Crne Gore i bližu okolinu:<br><br>
+              <strong>Ulcinj • Bar • Sutomore • Petrovac • Budva • Tivat • Kotor • Herceg Novi • Podgorica</strong> i okolna mjesta prema primorju.
+            </p>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <i data-lucide="building" class="h-5 w-5 text-brand-blue"></i> Podaci o kompaniji
+            </h2>
+            <div class="bg-white rounded-xl border border-slate-200 p-5 text-sm text-slate-600 space-y-2">
+              <p><strong>Puni naziv:</strong> DOBAR SERVIS D.O.O.</p>
+              <p><strong>Adresa:</strong> Šušanjska bb</p>
+              <p><strong>PIB:</strong> 03391981</p>
+              <p><strong>IBAN:</strong> ME25-540-0000007300724254</p>
+              <p><strong>SWIFT:</strong> OPPOMEPG (Erste Banka)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <ContactModal />
+</Layout>

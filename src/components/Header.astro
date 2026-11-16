@@ -1,0 +1,127 @@
+---
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const service =
+	pathname === '/kucni-aparati'
+		? 'home'
+		: pathname === '/horeca'
+			? 'horeca'
+			: pathname === '/odrzavanje-vila'
+				? 'facility'
+				: 'general';
+
+const inactiveDesktopLink =
+	'rounded-md px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-brand-dark';
+const activeDesktopLink = 'rounded-md px-3 py-2 text-sm font-bold text-brand-blue bg-slate-50';
+const inactiveMobileLink =
+	'block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50';
+const activeMobileLink = 'block rounded-lg bg-slate-50 px-3 py-2.5 text-sm font-bold text-brand-blue';
+---
+
+<header
+	id="site-header"
+	class="fixed inset-x-0 top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md"
+>
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="flex h-16 items-center justify-between gap-4 lg:h-20">
+			<a href="/" class="flex shrink-0 items-center gap-3 group">
+				<span
+					class="grid h-10 w-10 place-items-center rounded-lg bg-brand-dark text-white shadow-md group-hover:bg-brand-blue transition-colors"
+				>
+					<i data-lucide="snowflake" class="h-6 w-6"></i>
+				</span>
+				<span class="leading-tight">
+					<span class="block text-base font-extrabold tracking-wide text-brand-dark sm:text-lg">
+						DOBAR SERVIS <span class="text-xs font-bold text-slate-500">D.O.O.</span>
+					</span>
+					<span
+						class="block text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500 sm:text-[11px]"
+					>
+						Tehnički Servis Crna Gora
+					</span>
+				</span>
+			</a>
+
+			<nav class="hidden items-center gap-1 lg:flex" aria-label="Glavna navigacija">
+				<a href="/#o-nama" class={inactiveDesktopLink}>O nama</a>
+				<a
+					href="/kucni-aparati"
+					class={pathname === '/kucni-aparati' ? activeDesktopLink : inactiveDesktopLink}
+				>
+					Kućni aparati
+				</a>
+				<a
+					href="/horeca"
+					class={pathname === '/horeca' ? activeDesktopLink : inactiveDesktopLink}
+				>
+					HoReCa
+				</a>
+				<a
+					href="/odrzavanje-vila"
+					class={pathname === '/odrzavanje-vila' ? activeDesktopLink : inactiveDesktopLink}
+				>
+					Vile i Objekti
+				</a>
+				<a
+					href="/kontakt"
+					class={pathname === '/kontakt' ? activeDesktopLink : inactiveDesktopLink}
+				>
+					Kontakt
+				</a>
+			</nav>
+
+			<div class="hidden items-center gap-4 lg:flex">
+				<button
+					type="button"
+					data-service={service}
+					class="js-open-modal inline-flex items-center gap-2 rounded-lg bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-blue/20 transition hover:bg-brand-dark"
+				>
+					<i data-lucide="wrench" class="h-4 w-4"></i> Prijavi kvar
+				</button>
+			</div>
+
+			<button
+				id="mobile-menu-btn"
+				type="button"
+				class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition hover:bg-slate-50 lg:hidden"
+				aria-expanded="false"
+				aria-controls="mobile-menu"
+			>
+				<i data-lucide="menu" class="h-5 w-5" data-menu-icon="open"></i>
+				<i data-lucide="x" class="hidden h-5 w-5" data-menu-icon="close"></i>
+			</button>
+		</div>
+	</div>
+
+	<div id="mobile-menu" class="hidden border-t border-slate-200 bg-white lg:hidden shadow-lg absolute w-full">
+		<div class="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6">
+			<a href="/#o-nama" class={inactiveMobileLink}>O nama</a>
+			<a
+				href="/kucni-aparati"
+				class={pathname === '/kucni-aparati' ? activeMobileLink : inactiveMobileLink}
+			>
+				Kućni aparati
+			</a>
+			<a href="/horeca" class={pathname === '/horeca' ? activeMobileLink : inactiveMobileLink}>
+				HoReCa
+			</a>
+			<a
+				href="/odrzavanje-vila"
+				class={pathname === '/odrzavanje-vila' ? activeMobileLink : inactiveMobileLink}
+			>
+				Vile i Objekti
+			</a>
+			<a href="/kontakt" class={pathname === '/kontakt' ? activeMobileLink : inactiveMobileLink}>
+				Kontakt
+			</a>
+			<div class="flex items-center justify-between gap-3 border-t border-slate-100 pt-4 mt-2">
+				<button
+					type="button"
+					data-service={service}
+					class="js-open-modal w-full inline-flex items-center justify-center gap-2 rounded-lg bg-brand-blue px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark"
+				>
+					<i data-lucide="wrench" class="h-4 w-4"></i> Prijavi kvar
+				</button>
+			</div>
+		</div>
+	</div>
+</header>

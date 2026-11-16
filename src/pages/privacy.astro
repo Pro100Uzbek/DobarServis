@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactModal from '../components/ContactModal.astro';
+---
+
+<Layout
+	title="Politika privatnosti | Dobar Servis D.O.O."
+	description="Politika privatnosti i zaštita ličnih podataka kompanije Dobar Servis D.O.O. Crna Gora."
+>
+	<Header />
+	<main id="main-content" class="py-16 bg-white">
+		<div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+			<h1 class="text-3xl font-extrabold text-slate-900 sm:text-4xl mb-8">
+				Politika privatnosti
+			</h1>
+
+			<div class="prose prose-slate max-w-none space-y-6 text-sm text-slate-600 leading-relaxed">
+				<h2 class="text-lg font-bold text-slate-900 mt-8">1. Opšte odredbe</h2>
+				<p>
+					Ovu Politiku privatnosti primjenjuje <strong>Dobar Servis D.O.O.</strong>, sa sjedištem
+					na adresi Šušanjska bb, Bar, Crna Gora, PIB: 03391981. Politikom se uređuje način
+					prikupljanja, obrade i zaštite ličnih podataka korisnika naših usluga.
+				</p>
+
+				<h2 class="text-lg font-bold text-slate-900 mt-8">2. Koje podatke prikupljamo</h2>
+				<p>
+					Prikupljamo samo podatke neophodne za pružanje usluga: ime i prezime, broj telefona,
+					email adresu, adresu objekta i opis kvara uređaja. Podatke nam dostavljate dobrovoljno
+					putem telefona, WhatsApp-a, Telegrama, Viber-a ili email-a.
+				</p>
+
+				<h2 class="text-lg font-bold text-slate-900 mt-8">3. Svrha obrade podataka</h2>
+				<p>
+					Vaše podatke koristimo isključivo za: organizaciju izlaska majstora, dijagnostiku kvara,
+					naručivanje rezervnih dijelova, izdavanje fiskalnog računa i garancije, te komunikaciju u
+					vezi sa izvršenom uslugom. Ne koristimo podatke u marketinške svrhe bez izričite
+					saglasnosti.
+				</p>
+
+				<h2 class="text-lg font-bold text-slate-900 mt-8">
+					4. Kolačići (cookie) i analitika
+				</h2>
+				<p>
+					Naš sajt koristi Google Tag Manager (GTM) radi analitike posjeta. GTM može postaviti
+					kolačiće koji nam pomažu da razumijemo kako korisnici koriste sajt. Možete onemogućiti
+					kolačiće u podešavanjima vašeg pregledača, ali to može uticati na funkcionalnost sajta.
+				</p>
+
+				<h2 class="text-lg font-bold text-slate-900 mt-8">
+					5. Čuvanje i bezbjednost podataka
+				</h2>
+				<p>
+					Podatke čuvamo onoliko koliko je potrebno za izvršenje usluge i ispunjenje zakonskih
+					obaveza (npr. fiskalni računi). Primjenjujemo tehničke i organizacione mjere zaštite od
+					neovlašćenog pristupa, gubitka ili zloupotrebe podataka.
+				</p>
+
+				<h2 class="text-lg font-bold text-slate-900 mt-8">6. Vaša prava i kontakt</h2>
+				<p>
+					Imate pravo na pristup, ispravku, brisanje i ograničenje obrade svojih podataka. Za sva
+					pitanja i zahtjeve kontaktirajte nas:
+				</p>
+				<ul class="list-disc pl-6 space-y-1">
+					<li>
+						Email: <a href="mailto:info@dobarservis.com" class="text-brand-blue hover:underline">
+							info@dobarservis.com
+						</a>
+					</li>
+					<li>
+						Telefon: <a href="tel:+38267163499" class="text-brand-blue hover:underline">
+							+382 67 163 499
+						</a>
+					</li>
+				</ul>
+
+				<p class="mt-8 text-xs text-slate-500">Posljednje ažuriranje: 15.11.2026.</p>
+			</div>
+		</div>
+	</main>
+	<Footer />
+	<ContactModal />
+</Layout>
