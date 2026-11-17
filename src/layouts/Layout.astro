@@ -7,89 +7,125 @@ interface Props {
 }
 
 const { seo } = Astro.props;
-const organizationId = 'https://dobarservis.com/#organization';
-const websiteId = 'https://dobarservis.com/#website';
+const SITE = Astro.site?.toString().replace(/\/$/, '') || 'https://dobarservis.com';
+const ogImageUrl = new URL(seo.ogImage || '/TehnicarDS.webp', `${SITE}/`).toString();
+const logoUrl = new URL('/og/logo-512.png', `${SITE}/`).toString();
+const htmlLang = seo.lang === 'sr-ME' ? 'sr-Latn' : seo.lang;
+const organizationId = `${SITE}/#organization`;
+const websiteId = `${SITE}/#website`;
 const pageId = `${seo.canonical}#webpage`;
+
+const graph: Record<string, unknown>[] = [
+	{
+		'@type': ['LocalBusiness', 'HomeAndConstructionBusiness'],
+		'@id': organizationId,
+		name: 'DOBAR SERVIS D.O.O.',
+		url: `${SITE}/`,
+		taxID: '03391981',
+		telephone: '+38267163499',
+		email: 'info@dobarservis.com',
+		logo: logoUrl,
+		image: ogImageUrl,
+		address: {
+			'@type': 'PostalAddress',
+			streetAddress: 'Šušanjska bb',
+			addressLocality: 'Bar',
+			addressCountry: 'ME',
+		},
+		areaServed: [
+			'Ulcinj', 'Bar', 'Sutomore', 'Petrovac', 'Budva',
+			'Tivat', 'Kotor', 'Herceg Novi', 'Podgorica',
+		],
+		openingHoursSpecification: {
+			'@type': 'OpeningHoursSpecification',
+			dayOfWeek: [
+				'https://schema.org/Monday',
+				'https://schema.org/Tuesday',
+				'https://schema.org/Wednesday',
+				'https://schema.org/Thursday',
+				'https://schema.org/Friday',
+			],
+			opens: '08:00',
+			closes: '20:00',
+		},
+	},
+	{
+		'@type': 'WebSite',
+		'@id': websiteId,
+		url: `${SITE}/`,
+		name: 'Dobar Servis',
+		inLanguage: ['sr', 'en', 'ru'],
+		publisher: { '@id': organizationId },
+	},
+	{
+		'@type': 'WebPage',
+		'@id': pageId,
+		url: seo.canonical,
+		name: seo.title,
+		description: seo.description,
+		inLanguage: seo.lang === 'sr-ME' ? 'sr' : seo.lang,
+		isPartOf: { '@id': websiteId },
+		about: { '@id': organizationId },
+	},
+];
+
+if (seo.service && ['home', 'horeca', 'facility'].includes(seo.service)) {
+	graph.push({
+		'@type': 'Service',
+		provider: { '@id': organizationId },
+		areaServed: 'Crna Gora',
+		url: seo.canonical,
+		name: seo.title,
+	});
+}
+
+if (seo.breadcrumbs && seo.breadcrumbs.length > 1) {
+	graph.push({
+		'@type': 'BreadcrumbList',
+		itemListElement: seo.breadcrumbs.map((item, index) => ({
+			'@type': 'ListItem',
+			position: index + 1,
+			name: item.name,
+			item: new URL(item.url, `${SITE}/`).toString(),
+		})),
+	});
+}
+
+if (seo.schema) {
+	graph.push(...(Array.isArray(seo.schema) ? seo.schema : [seo.schema]));
+}
+
 const structuredData = JSON.stringify({
 	'@context': 'https://schema.org',
-	'@graph': [
-		{
-			'@type': ['LocalBusiness', 'HomeAndConstructionBusiness'],
-			'@id': organizationId,
-			name: 'DOBAR SERVIS D.O.O.',
-			url: 'https://dobarservis.com/',
-			taxID: '03391981',
-			telephone: '+38267163499',
-			email: 'info@dobarservis.com',
-			address: {
-				'@type': 'PostalAddress',
-				streetAddress: 'Šušanjska bb',
-				addressLocality: 'Bar',
-				addressCountry: 'ME',
-			},
-			areaServed: [
-				'Ulcinj',
-				'Bar',
-				'Sutomore',
-				'Petrovac',
-				'Budva',
-				'Tivat',
-				'Kotor',
-				'Herceg Novi',
-				'Podgorica',
-			],
-			openingHoursSpecification: {
-				'@type': 'OpeningHoursSpecification',
-				dayOfWeek: [
-					'https://schema.org/Monday',
-					'https://schema.org/Tuesday',
-					'https://schema.org/Wednesday',
-					'https://schema.org/Thursday',
-					'https://schema.org/Friday',
-				],
-				opens: '08:00',
-				closes: '20:00',
-			},
-		},
-		{
-			'@type': 'WebSite',
-			'@id': websiteId,
-			url: 'https://dobarservis.com/',
-			name: 'Dobar Servis',
-			inLanguage: seo.lang,
-			publisher: { '@id': organizationId },
-		},
-		{
-			'@type': 'WebPage',
-			'@id': pageId,
-			url: seo.canonical,
-			name: seo.title,
-			description: seo.description,
-			inLanguage: seo.lang,
-			isPartOf: { '@id': websiteId },
-			about: { '@id': organizationId },
-		},
-	],
+	'@graph': graph,
 }).replace(/</g, '\\u003c');
 
+const robots = seo.noindex
+	? 'noindex, nofollow'
+	: seo.lang !== 'sr-ME' && !seo.translated
+		? 'noindex, follow'
+		: 'index, follow, max-image-preview:large';
 ---
 
 <!DOCTYPE html>
 <html
-	lang={seo.lang}
+	lang={htmlLang}
 	data-lang={seo.lang}
 	data-city={seo.city || ''}
 	data-service={seo.service || 'general'}
+	data-is-contact={seo.isContactPage ? 'true' : 'false'}
 	class="scroll-smooth"
 >
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/inter-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
 		<title>{seo.title}</title>
 		<meta name="description" content={seo.description} />
 		<link rel="canonical" href={seo.canonical} />
 		<meta name="theme-color" content="#0B1F4B" />
-		{seo.noindex && <meta name="robots" content="noindex, nofollow" />}
+		<meta name="robots" content={robots} />
 		{seo.alternates?.map((alternate) => (
 			<link rel="alternate" hreflang={alternate.hreflang} href={alternate.href} />
 		))}
@@ -100,59 +136,35 @@ const structuredData = JSON.stringify({
 		<meta property="og:description" content={seo.description} />
 		<meta property="og:url" content={seo.canonical} />
 		<meta property="og:locale" content={seo.lang.replace('-', '_')} />
-		{seo.ogImage && <meta property="og:image" content={new URL(seo.ogImage, 'https://dobarservis.com').href} />}
+		<meta property="og:image" content={ogImageUrl} />
 		<script type="application/ld+json" set:html={structuredData} />
 		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
-
 			(() => {
 				const triggerEvents = ['scroll', 'mousemove', 'touchstart', 'keydown'];
 				let gtmLoaded = false;
 				let fallbackTimer;
-
 				const loadGtm = () => {
 					if (gtmLoaded) return;
 					gtmLoaded = true;
 					window.clearTimeout(fallbackTimer);
-					triggerEvents.forEach((eventName) => {
-						window.removeEventListener(eventName, loadGtm);
-					});
-
+					triggerEvents.forEach((eventName) => window.removeEventListener(eventName, loadGtm));
 					window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
-
 					const script = document.createElement('script');
 					script.async = true;
 					script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-TD2M4L53';
 					document.head.appendChild(script);
 				};
-
-				triggerEvents.forEach((eventName) => {
-					window.addEventListener(eventName, loadGtm, { once: true, passive: true });
-				});
+				triggerEvents.forEach((eventName) => window.addEventListener(eventName, loadGtm, { once: true, passive: true }));
 				fallbackTimer = window.setTimeout(loadGtm, 2500);
 			})();
 		</script>
 	</head>
 	<body class="bg-white font-sans text-slate-900 antialiased pt-16 lg:pt-20 pb-20 lg:pb-0">
-		<a
-			href="#main-content"
-			class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:text-brand-dark focus:shadow-lg"
-		>
-			Preskoči na sadržaj
-		</a>
-		<noscript>
-			<iframe
-				src="https://www.googletagmanager.com/ns.html?id=GTM-TD2M4L53"
-				height="0"
-				width="0"
-				title="Google Tag Manager"
-				style="display:none;visibility:hidden"
-			></iframe>
-		</noscript>
+		<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:text-brand-dark focus:shadow-lg">Preskoči na sadržaj</a>
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TD2M4L53" height="0" width="0" title="Google Tag Manager" style="display:none;visibility:hidden"></iframe></noscript>
 		<slot name="header" />
-		<main id="main-content">
-			<slot />
-		</main>
+		<main id="main-content"><slot /></main>
 		<slot name="footer" />
 		<slot name="modal" />
 	</body>
@@ -165,10 +177,8 @@ const structuredData = JSON.stringify({
 		font-weight: 100 900;
 		font-display: swap;
 		src: url('/fonts/inter-cyrillic-ext-wght-normal.woff2') format('woff2');
-		unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F,
-			U+FE2E-FE2F;
+		unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 	}
-
 	@font-face {
 		font-family: 'Inter';
 		font-style: normal;
@@ -177,29 +187,22 @@ const structuredData = JSON.stringify({
 		src: url('/fonts/inter-cyrillic-wght-normal.woff2') format('woff2');
 		unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 	}
-
 	@font-face {
 		font-family: 'Inter';
 		font-style: normal;
 		font-weight: 100 900;
 		font-display: swap;
 		src: url('/fonts/inter-latin-ext-wght-normal.woff2') format('woff2');
-		unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
-			U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
-			U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+		unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 	}
-
 	@font-face {
 		font-family: 'Inter';
 		font-style: normal;
 		font-weight: 100 900;
 		font-display: swap;
 		src: url('/fonts/inter-latin-wght-normal.woff2') format('woff2');
-		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-			U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
-			U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 	}
-
 	:root {
 		--font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
 	}

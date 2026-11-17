@@ -32,3 +32,19 @@
 .animate-marquee2 {
 	animation: marquee2 25s linear infinite;
 }
+
+@media (prefers-reduced-motion: reduce) {
+	.animate-marquee,
+	.animate-marquee2,
+	.animate-pulse {
+		animation: none !important;
+	}
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

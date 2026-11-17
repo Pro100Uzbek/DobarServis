@@ -1,6 +1,11 @@
 ---
 import Icon from './Icon.astro';
 
+const normalizePath = (p: string) =>
+	p === '/' ? '/' : p.endsWith('/') ? p : `${p}/`;
+const currentPath = normalizePath(Astro.url.pathname);
+const isActive = (href: string) =>
+	!href.includes('#') && currentPath === normalizePath(href);
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 const service =
 	pathname === '/kucni-aparati'
@@ -48,24 +53,28 @@ const activeMobileLink = 'block rounded-lg bg-slate-50 px-3 py-2.5 text-sm font-
 				<a
 					href="/kucni-aparati/"
 					class={pathname === '/kucni-aparati' ? activeDesktopLink : inactiveDesktopLink}
+					aria-current={isActive('/kucni-aparati/') ? 'page' : undefined}
 				>
 					Kućni aparati
 				</a>
 				<a
 					href="/horeca/"
 					class={pathname === '/horeca' ? activeDesktopLink : inactiveDesktopLink}
+					aria-current={isActive('/horeca/') ? 'page' : undefined}
 				>
 					HoReCa
 				</a>
 				<a
 					href="/odrzavanje-vila/"
 					class={pathname === '/odrzavanje-vila' ? activeDesktopLink : inactiveDesktopLink}
+					aria-current={isActive('/odrzavanje-vila/') ? 'page' : undefined}
 				>
 					Vile i Objekti
 				</a>
 				<a
 					href="/kontakt/"
 					class={pathname === '/kontakt' ? activeDesktopLink : inactiveDesktopLink}
+					aria-current={isActive('/kontakt/') ? 'page' : undefined}
 				>
 					Kontakt
 				</a>
@@ -104,24 +113,26 @@ const activeMobileLink = 'block rounded-lg bg-slate-50 px-3 py-2.5 text-sm font-
 	</div>
 
 	<div id="mobile-menu" class="absolute hidden w-full border-t border-slate-200 bg-white shadow-lg lg:hidden">
-		<div class="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6">
+		<nav class="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6" aria-label="Mobilna navigacija">
 			<a href="/#o-nama" class={inactiveMobileLink}>O nama</a>
 			<a
 				href="/kucni-aparati/"
 				class={pathname === '/kucni-aparati' ? activeMobileLink : inactiveMobileLink}
+				aria-current={isActive('/kucni-aparati/') ? 'page' : undefined}
 			>
 				Kućni aparati
 			</a>
-			<a href="/horeca/" class={pathname === '/horeca' ? activeMobileLink : inactiveMobileLink}>
+			<a href="/horeca/" class={pathname === '/horeca' ? activeMobileLink : inactiveMobileLink} aria-current={isActive('/horeca/') ? 'page' : undefined}>
 				HoReCa
 			</a>
 			<a
 				href="/odrzavanje-vila/"
 				class={pathname === '/odrzavanje-vila' ? activeMobileLink : inactiveMobileLink}
+				aria-current={isActive('/odrzavanje-vila/') ? 'page' : undefined}
 			>
 				Vile i Objekti
 			</a>
-			<a href="/kontakt/" class={pathname === '/kontakt' ? activeMobileLink : inactiveMobileLink}>
+			<a href="/kontakt/" class={pathname === '/kontakt' ? activeMobileLink : inactiveMobileLink} aria-current={isActive('/kontakt/') ? 'page' : undefined}>
 				Kontakt
 			</a>
 			<div class="mt-2 flex items-center justify-between gap-3 border-t border-slate-100 pt-4">
@@ -141,15 +152,15 @@ const activeMobileLink = 'block rounded-lg bg-slate-50 px-3 py-2.5 text-sm font-
 					Prijavi kvar
 				</button>
 			</div>
-		</div>
+		</nav>
 	</div>
 </header>
 
 <script>
-	const menuButton = document.querySelector<HTMLButtonElement>('#mobile-menu-btn');
-	const mobileMenu = document.querySelector<HTMLElement>('#mobile-menu');
-	const openIcon = document.querySelector<SVGElement>('[data-menu-icon="open"]');
-	const closeIcon = document.querySelector<SVGElement>('[data-menu-icon="close"]');
+	const menuButton = document.querySelector<HTMLButtonElement>('#mobile-menu-btn')!;
+	const mobileMenu = document.querySelector<HTMLElement>('#mobile-menu')!;
+	const openIcon = document.querySelector<SVGElement>('[data-menu-icon="open"]')!;
+	const closeIcon = document.querySelector<SVGElement>('[data-menu-icon="close"]')!;
 
 	if (!menuButton || !mobileMenu || !openIcon || !closeIcon) {
 		throw new Error('Mobile navigation elements are missing from Header.');

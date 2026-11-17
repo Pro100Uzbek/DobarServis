@@ -1,10 +1,11 @@
 # DobarServis
 
-Статический сайт на Astro. Исходные HTML-страницы сохранены в `_legacy_html/` для переноса контента.
+Статический сайт на Astro.
 
 ```sh
 npm install
 npm run dev
+npm run check
 npm run build
 ```
 

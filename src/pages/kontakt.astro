@@ -13,6 +13,11 @@ const seo = buildSeoConfig({
 	path: '/kontakt/',
 	lang: 'sr-ME',
 	service: 'general',
+	isContactPage: true,
+	breadcrumbs: [
+		{ name: 'Početna', url: '/' },
+		{ name: 'Kontakt', url: '/kontakt/' },
+	],
 });
 ---
 
@@ -92,7 +97,7 @@ const seo = buildSeoConfig({
             </h2>
             <div class="bg-white rounded-xl border border-slate-200 p-5 text-sm text-slate-600 space-y-2">
               <p><strong>Puni naziv:</strong> DOBAR SERVIS D.O.O.</p>
-              <p><strong>Adresa:</strong> Šušanjska bb</p>
+              <p><strong>Adresa:</strong> Šušanjska bb, Bar, Crna Gora</p>
               <p><strong>PIB:</strong> 03391981</p>
               <p><strong>IBAN:</strong> ME25-540-0000007300724254</p>
               <p><strong>SWIFT:</strong> OPPOMEPG (Erste Banka)</p>
@@ -102,5 +107,5 @@ const seo = buildSeoConfig({
       </div>
     </section>
   <Footer slot="footer" />
-  <ContactModal slot="modal" />
+  <ContactModal isContactPage={true} slot="modal" />
 </Layout>

@@ -13,6 +13,10 @@ export interface SeoConfig {
 	ogImage?: string;
 	noindex?: boolean;
 	alternates?: AlternateLink[];
+	breadcrumbs?: { name: string; url: string }[];
+	schema?: Record<string, unknown> | Record<string, unknown>[];
+	isContactPage?: boolean;
+	translated?: boolean;
 }
 
 export type BuildSeoConfigInput = Omit<SeoConfig, 'canonical'> & {
@@ -20,6 +24,17 @@ export type BuildSeoConfigInput = Omit<SeoConfig, 'canonical'> & {
 };
 
 const SITE_ORIGIN = 'https://dobarservis.com';
+
+const HREFLANG_MAP: Record<string, string> = {
+	'sr-ME': 'sr',
+	'sr-me': 'sr',
+	en: 'en',
+	ru: 'ru',
+};
+
+export function toHreflang(locale: string): string {
+	return HREFLANG_MAP[locale] ?? locale;
+}
 
 function normalizeSiteUrl(path: string): string {
 	const parsedUrl = new URL(path, `${SITE_ORIGIN}/`);
@@ -35,32 +50,33 @@ export function buildSeoConfig({
 	alternates,
 	...config
 }: BuildSeoConfigInput): SeoConfig {
-	const normalizedAlternates = alternates ? [...alternates] : undefined;
-	const hasLanguageAlternates = normalizedAlternates?.some(
-		(alternate) => alternate.hreflang.toLowerCase() !== 'x-default',
-	);
+	const normalizedAlternates = alternates
+		? alternates.map((alternate) => ({
+				...alternate,
+				hreflang: toHreflang(alternate.hreflang),
+			}))
+		: undefined;
+	const canonical = normalizeSiteUrl(path);
 
-	if (normalizedAlternates && hasLanguageAlternates) {
-		const defaultLanguageAlternate = normalizedAlternates.find(
-			(alternate) => alternate.hreflang.toLowerCase() === 'sr-me',
-		) ?? normalizedAlternates.find(
-			(alternate) => alternate.hreflang.toLowerCase() !== 'x-default',
-		);
-		const xDefaultAlternate = normalizedAlternates.find(
+	if (normalizedAlternates) {
+		const defaultAlternate =
+			normalizedAlternates.find((alternate) => alternate.hreflang === 'sr') ??
+			normalizedAlternates.find((alternate) => alternate.hreflang !== 'x-default');
+		const hasXDefault = normalizedAlternates.some(
 			(alternate) => alternate.hreflang.toLowerCase() === 'x-default',
 		);
-
-		if (!xDefaultAlternate && defaultLanguageAlternate) {
+		if (!hasXDefault) {
 			normalizedAlternates.push({
 				hreflang: 'x-default',
-				href: normalizeSiteUrl(defaultLanguageAlternate.href),
+				href: defaultAlternate ? normalizeSiteUrl(defaultAlternate.href) : canonical,
 			});
 		}
 	}
 
 	return {
 		...config,
-		canonical: normalizeSiteUrl(path),
+		ogImage: config.ogImage ?? '/TehnicarDS.webp',
+		canonical,
 		city,
 		...(normalizedAlternates ? { alternates: normalizedAlternates } : {}),
 	};

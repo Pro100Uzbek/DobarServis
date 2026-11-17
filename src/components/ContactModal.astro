@@ -1,5 +1,11 @@
 ---
 import Icon from './Icon.astro';
+
+interface Props {
+	isContactPage?: boolean;
+}
+
+const { isContactPage = false } = Astro.props;
 ---
 
 <div
@@ -140,18 +146,53 @@ import Icon from './Icon.astro';
 <div
 	class="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] lg:hidden"
 >
-	<button
-		type="button"
-		data-service="urgent"
-		class="js-open-modal inline-flex w-full items-center justify-center gap-2 rounded-lg bg-brand-blue py-3.5 text-sm font-bold text-white shadow-md transition active:scale-[0.98]"
-	>
-		<Icon name="wrench" class="h-5 w-5" />
-		Prijavi kvar
-	</button>
+	{isContactPage ? (
+		<a
+			href="tel:+38267163499"
+			class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-brand-blue py-3.5 text-sm font-bold text-white shadow-md transition active:scale-[0.98]"
+		>
+			<Icon name="phone" class="h-5 w-5" /> Pozovi odmah
+		</a>
+	) : (
+		<button
+			type="button"
+			data-sticky-cta
+			data-service="urgent"
+			class="js-open-modal inline-flex w-full items-center justify-center gap-2 rounded-lg bg-brand-blue py-3.5 text-sm font-bold text-white shadow-md transition active:scale-[0.98]"
+		>
+			<Icon name="wrench" class="h-5 w-5" />
+			<span data-sticky-label>Prijavi kvar</span>
+		</button>
+	)}
 </div>
 
 <script>
 	const services = ['general', 'urgent', 'home', 'horeca', 'facility'] as const;
+
+	function syncStickyCta() {
+		const sticky = document.querySelector<HTMLElement>('[data-sticky-cta]');
+		if (!sticky) return;
+		const pageService = document.documentElement.dataset.service;
+		const service = pageService === 'general' ? 'urgent' : pageService || 'urgent';
+		const labels: Record<string, string> = {
+			urgent: 'Prijavi kvar',
+			home: 'Zakaži majstora',
+			horeca: 'Zahtev za servis',
+			facility: 'Konsultacija',
+		};
+		sticky.dataset.service = service;
+		const label = sticky.querySelector<HTMLElement>('[data-sticky-label]');
+		if (label) label.textContent = labels[service] || 'Prijavi kvar';
+	}
+
+	function resolveService(opener: HTMLElement | null): string {
+		const deepLink = new URLSearchParams(window.location.search).get('service');
+		if (opener === null && deepLink && services.some((service) => service === deepLink)) return deepLink;
+		if (opener?.dataset.service) return opener.dataset.service;
+		return document.documentElement.dataset.service || 'general';
+	}
+
+	function initModal() {
 	type Service = (typeof services)[number];
 
 	const serviceLabels: Record<Service, string> = {
@@ -278,7 +319,7 @@ import Icon from './Icon.astro';
 		if (!opener) return;
 
 		event.preventDefault();
-		openModal(opener.dataset.service, opener);
+		openModal(resolveService(opener), opener);
 	});
 
 	overlay.addEventListener('click', (event) => {
@@ -295,4 +336,15 @@ import Icon from './Icon.astro';
 
 	const deepLinkService = new URLSearchParams(window.location.search).get('service');
 	if (deepLinkService && isService(deepLinkService)) openModal(deepLinkService, null);
+	}
+
+	const initialize = () => {
+		syncStickyCta();
+		initModal();
+	};
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initialize, { once: true });
+	} else {
+		initialize();
+	}
 </script>
