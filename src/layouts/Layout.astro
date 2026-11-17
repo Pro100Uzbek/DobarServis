@@ -1,40 +1,32 @@
 ---
 import '../styles/global.css';
+import type { SeoConfig } from '../utils/seo';
 
 interface Props {
-	title?: string;
-	description?: string;
+	seo: SeoConfig;
 }
 
-const {
-	title = 'Dobar Servis | Servis i održavanje u Crnoj Gori',
-	description = 'Brza popravka kućnih aparata, servis profesionalne opreme za restorane i tehničko održavanje vila u Crnoj Gori. Garancija do 12 mjeseci.',
-} = Astro.props;
-
-const site = Astro.site ?? new URL('https://dobarservis.com');
-const siteUrl = site.href;
-const pagePath = Astro.url.pathname.replace(/^\/(?:en|ru)(?=\/|$)/, '') || '/';
-const serbianUrl = new URL(pagePath, site).href;
-const englishUrl = new URL(`/en${pagePath === '/' ? '/' : pagePath}`, site).href;
-const russianUrl = new URL(`/ru${pagePath === '/' ? '/' : pagePath}`, site).href;
-const canonicalUrl = new URL(Astro.url.pathname, site).href;
-const pageLanguage = /^\/en(?:\/|$)/.test(Astro.url.pathname)
-	? 'en'
-	: /^\/ru(?:\/|$)/.test(Astro.url.pathname)
-		? 'ru'
-		: 'sr-ME';
-
-const businessId = `${siteUrl}#business`;
+const { seo } = Astro.props;
+const organizationId = 'https://dobarservis.com/#organization';
+const websiteId = 'https://dobarservis.com/#website';
+const pageId = `${seo.canonical}#webpage`;
 const structuredData = JSON.stringify({
 	'@context': 'https://schema.org',
 	'@graph': [
 		{
-			'@type': 'LocalBusiness',
-			'@id': businessId,
-			name: 'Dobar Servis D.O.O.',
-			url: siteUrl,
+			'@type': ['LocalBusiness', 'HomeAndConstructionBusiness'],
+			'@id': organizationId,
+			name: 'DOBAR SERVIS D.O.O.',
+			url: 'https://dobarservis.com/',
+			taxID: '03391981',
 			telephone: '+38267163499',
 			email: 'info@dobarservis.com',
+			address: {
+				'@type': 'PostalAddress',
+				streetAddress: 'Šušanjska bb',
+				addressLocality: 'Bar',
+				addressCountry: 'ME',
+			},
 			areaServed: [
 				'Ulcinj',
 				'Bar',
@@ -46,47 +38,75 @@ const structuredData = JSON.stringify({
 				'Herceg Novi',
 				'Podgorica',
 			],
-			priceRange: '€€',
-			address: {
-				'@type': 'PostalAddress',
-				streetAddress: 'Šušanjska bb',
-				addressLocality: 'Bar',
-				addressCountry: 'ME',
+			openingHoursSpecification: {
+				'@type': 'OpeningHoursSpecification',
+				dayOfWeek: [
+					'https://schema.org/Monday',
+					'https://schema.org/Tuesday',
+					'https://schema.org/Wednesday',
+					'https://schema.org/Thursday',
+					'https://schema.org/Friday',
+				],
+				opens: '08:00',
+				closes: '20:00',
 			},
 		},
 		{
+			'@type': 'WebSite',
+			'@id': websiteId,
+			url: 'https://dobarservis.com/',
+			name: 'Dobar Servis',
+			inLanguage: seo.lang,
+			publisher: { '@id': organizationId },
+		},
+		{
 			'@type': 'WebPage',
-			'@id': `${canonicalUrl}#webpage`,
-			url: canonicalUrl,
-			name: title,
-			description,
-			inLanguage: pageLanguage,
-			about: { '@id': businessId },
+			'@id': pageId,
+			url: seo.canonical,
+			name: seo.title,
+			description: seo.description,
+			inLanguage: seo.lang,
+			isPartOf: { '@id': websiteId },
+			about: { '@id': organizationId },
 		},
 	],
 }).replace(/</g, '\\u003c');
 
-const faviconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><g fill="none" stroke="#1E74BB" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M32 5v54M8.6 18.5l46.8 27M8.6 45.5l46.8-27"/><path d="m25 12 7 7 7-7m-14 40 7-7 7 7M11 27l10 1 1-10m31 18-10-1-1 10M11 37l10-1 1 10m31-18-10 1-1-10"/></g></svg>`;
-const faviconHref = `data:image/svg+xml,${encodeURIComponent(faviconSvg)}`;
 ---
 
 <!DOCTYPE html>
-<html lang="sr-ME" class="scroll-smooth">
+<html
+	lang={seo.lang}
+	data-lang={seo.lang}
+	data-city={seo.city || ''}
+	data-service={seo.service || 'general'}
+	class="scroll-smooth"
+>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>{title}</title>
-		<meta name="description" content={description} />
-		<link rel="icon" type="image/svg+xml" href={faviconHref} />
-		<link rel="canonical" href={canonicalUrl} />
-		<link rel="alternate" hreflang="sr-ME" href={serbianUrl} />
-		<!-- <link rel="alternate" hreflang="en" href={englishUrl} /> -->
-		<!-- <link rel="alternate" hreflang="ru" href={russianUrl} /> -->
-		<link rel="alternate" hreflang="x-default" href={serbianUrl} />
+		<title>{seo.title}</title>
+		<meta name="description" content={seo.description} />
+		<link rel="canonical" href={seo.canonical} />
+		<meta name="theme-color" content="#0B1F4B" />
+		{seo.noindex && <meta name="robots" content="noindex, nofollow" />}
+		{seo.alternates?.map((alternate) => (
+			<link rel="alternate" hreflang={alternate.hreflang} href={alternate.href} />
+		))}
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Dobar Servis" />
+		<meta property="og:title" content={seo.title} />
+		<meta property="og:description" content={seo.description} />
+		<meta property="og:url" content={seo.canonical} />
+		<meta property="og:locale" content={seo.lang.replace('-', '_')} />
+		{seo.ogImage && <meta property="og:image" content={new URL(seo.ogImage, 'https://dobarservis.com').href} />}
 		<script type="application/ld+json" set:html={structuredData} />
 		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+
 			(() => {
-				const triggerEvents = ['scroll', 'mousemove', 'touchstart'];
+				const triggerEvents = ['scroll', 'mousemove', 'touchstart', 'keydown'];
 				let gtmLoaded = false;
 				let fallbackTimer;
 
@@ -98,7 +118,6 @@ const faviconHref = `data:image/svg+xml,${encodeURIComponent(faviconSvg)}`;
 						window.removeEventListener(eventName, loadGtm);
 					});
 
-					window.dataLayer = window.dataLayer || [];
 					window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
 
 					const script = document.createElement('script');
@@ -115,106 +134,29 @@ const faviconHref = `data:image/svg+xml,${encodeURIComponent(faviconSvg)}`;
 		</script>
 	</head>
 	<body class="bg-white font-sans text-slate-900 antialiased pt-16 lg:pt-20 pb-20 lg:pb-0">
-		<slot />
+		<a
+			href="#main-content"
+			class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:text-brand-dark focus:shadow-lg"
+		>
+			Preskoči na sadržaj
+		</a>
+		<noscript>
+			<iframe
+				src="https://www.googletagmanager.com/ns.html?id=GTM-TD2M4L53"
+				height="0"
+				width="0"
+				title="Google Tag Manager"
+				style="display:none;visibility:hidden"
+			></iframe>
+		</noscript>
+		<slot name="header" />
+		<main id="main-content">
+			<slot />
+		</main>
+		<slot name="footer" />
+		<slot name="modal" />
 	</body>
 </html>
-
-<script>
-	import {
-		Beer,
-		Briefcase,
-		Building,
-		Building2,
-		CalendarCheck,
-		Camera,
-		Check,
-		CheckCircle2,
-		ChefHat,
-		ChevronRight,
-		ClipboardList,
-		Clock,
-		CreditCard,
-		Droplets,
-		FileCheck,
-		FileText,
-		Flame,
-		Home,
-		Mail,
-		MapPin,
-		Menu,
-		MessageCircle,
-		MessagesSquare,
-		Microwave,
-		Package,
-		Phone,
-		PhoneCall,
-		Receipt,
-		Refrigerator,
-		Search,
-		Send,
-		ShieldCheck,
-		Siren,
-		Snowflake,
-		Sun,
-		Tag,
-		Truck,
-		User,
-		Users,
-		Utensils,
-		WashingMachine,
-		Wrench,
-		X,
-		createIcons,
-	} from 'lucide';
-
-	createIcons({
-		icons: {
-			Beer,
-			Briefcase,
-			Building,
-			Building2,
-			CalendarCheck,
-			Camera,
-			Check,
-			CheckCircle2,
-			ChefHat,
-			ChevronRight,
-			ClipboardList,
-			Clock,
-			CreditCard,
-			Droplets,
-			FileCheck,
-			FileText,
-			Flame,
-			Home,
-			Mail,
-			MapPin,
-			Menu,
-			MessageCircle,
-			MessagesSquare,
-			Microwave,
-			Package,
-			Phone,
-			PhoneCall,
-			Receipt,
-			Refrigerator,
-			Search,
-			Send,
-			ShieldCheck,
-			Siren,
-			Snowflake,
-			Sun,
-			Tag,
-			Truck,
-			User,
-			Users,
-			Utensils,
-			WashingMachine,
-			Wrench,
-			X,
-		},
-	});
-</script>
 
 <style is:global>
 	@font-face {

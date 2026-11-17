@@ -1,13 +1,23 @@
 ---
+import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ContactModal from '../components/ContactModal.astro';
+import { buildSeoConfig } from '../utils/seo';
+
+const seo = buildSeoConfig({
+	title: 'Popravka kućnih aparata i bijele tehnike na vašoj adresi | Dobar Servis',
+	description:
+		'Brza popravka frižidera, veš mašina, mašina za pranje sudova, bojlera i rerni na adresi. Obezbjeđujemo rezervne dijelove. Garancija do 12 mjeseci. ☎ +382 67 163 499',
+	path: '/kucni-aparati/',
+	lang: 'sr-ME',
+	service: 'home',
+});
 ---
 
-<Layout title="Popravka kućnih aparata i bijele tehnike na vašoj adresi | Dobar Servis" description="Brza popravka frižidera, veš mašina, mašina za pranje sudova, bojlera i rerni na adresi. Obezbjeđujemo rezervne dijelove. Garancija do 12 mjeseci. ☎ +382 67 163 499">
-  <Header />
-<main>
+<Layout seo={seo}>
+  <Header slot="header" />
     <!-- HERO -->
     <section class="relative overflow-hidden bg-brand-dark text-white py-16 lg:py-24">
       <div class="pointer-events-none absolute inset-0 opacity-[0.05]" style="background-image:linear-gradient(to right,#fff 1px,transparent 1px),linear-gradient(to bottom,#fff 1px,transparent 1px);background-size:64px 64px;"></div>
@@ -15,16 +25,16 @@ import ContactModal from '../components/ContactModal.astro';
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <span class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/60 px-4 py-1.5 text-xs font-semibold text-slate-300">
-              <i data-lucide="home" class="h-4 w-4 text-brand-blue"></i> Za domaćinstva • Izlazak na adresu • Obezbjeđujemo dijelove
+              <Icon name="home" class="h-4 w-4 text-brand-blue" /> Za domaćinstva • Izlazak na adresu • Obezbjeđujemo dijelove
             </span>
             <h1 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">Brza popravka kućnih aparata na vašoj adresi</h1>
             <p class="mt-5 text-lg text-slate-300 leading-relaxed max-w-2xl">Servisiramo frižidere, veš mašine, mašine za pranje sudova, bojlere, štednjake i rerne. Dijagnostika kvara na licu mjesta, nabavka pouzdanih rezervnih dijelova, predračun prije početka rada i garancija do 12 mjeseci uz fiskalni račun.</p>
             <div class="mt-8 flex flex-col sm:flex-row gap-3">
               <button type="button" data-service="home" class="js-open-modal inline-flex items-center justify-center gap-2 rounded-xl bg-brand-blue px-6 py-3.5 text-base font-semibold text-white shadow-xl transition hover:bg-blue-500">
-                <i data-lucide="calendar-check" class="h-5 w-5"></i> Zakaži majstora
+                <Icon name="calendar-check" class="h-5 w-5" /> Zakaži majstora
               </button>
               <a href="tel:+38267163499" class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-600 bg-slate-800/40 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-slate-400 hover:bg-slate-700">
-                <i data-lucide="phone" class="h-5 w-5"></i> Pozovi +382 67 163 499
+                <Icon name="phone" class="h-5 w-5" /> Pozovi +382 67 163 499
               </a>
             </div>
           </div>
@@ -47,27 +57,27 @@ import ContactModal from '../components/ContactModal.astro';
         </div>
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col">
-            <i data-lucide="refrigerator" class="h-10 w-10 text-brand-blue mb-4"></i>
+            <Icon name="refrigerator" class="h-10 w-10 text-brand-blue mb-4" />
             <h3 class="text-lg font-bold text-slate-900">Frižideri i zamrzivači</h3>
             <p class="mt-2 text-sm text-slate-600 flex-1">Dijagnostika i zamjena kompresora, dopuna freona, popravka No Frost sistema, termostata i elektronike.</p>
           </div>
           <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col">
-            <i data-lucide="washing-machine" class="h-10 w-10 text-brand-blue mb-4"></i>
+            <Icon name="washing-machine" class="h-10 w-10 text-brand-blue mb-4" />
             <h3 class="text-lg font-bold text-slate-900">Veš mašine i sušilice</h3>
             <p class="mt-2 text-sm text-slate-600 flex-1">Zamjena ležajeva, pumpi za vodu, grijača, remena, popravka elektronike i uklanjanje buke ili curenja.</p>
           </div>
           <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col">
-            <i data-lucide="utensils" class="h-10 w-10 text-brand-blue mb-4"></i>
+            <Icon name="utensils" class="h-10 w-10 text-brand-blue mb-4" />
             <h3 class="text-lg font-bold text-slate-900">Mašine za pranje sudova</h3>
             <p class="mt-2 text-sm text-slate-600 flex-1">Rješavanje problema sa odvodom, grijanjem vode, pumpama visokog pritiska, doziranjem i začepljenjima.</p>
           </div>
           <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col">
-            <i data-lucide="flame" class="h-10 w-10 text-brand-blue mb-4"></i>
+            <Icon name="flame" class="h-10 w-10 text-brand-blue mb-4" />
             <h3 class="text-lg font-bold text-slate-900">Bojleri</h3>
             <p class="mt-2 text-sm text-slate-600 flex-1">Zamjena grijača i termostata, temeljno čišćenje kamenca, zamjena sigurnosnog ventila i otklanjanje curenja.</p>
           </div>
           <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col">
-            <i data-lucide="microwave" class="h-10 w-10 text-brand-blue mb-4"></i>
+            <Icon name="microwave" class="h-10 w-10 text-brand-blue mb-4" />
             <h3 class="text-lg font-bold text-slate-900">Štednjaci, ploče i rerne</h3>
             <p class="mt-2 text-sm text-slate-600 flex-1">Popravka gornjih i donjih grijača, ventilatora, prekidača, staklokeramičkih ploča i senzora.</p>
           </div>
@@ -75,7 +85,7 @@ import ContactModal from '../components/ContactModal.astro';
             <h3 class="text-lg font-bold text-brand-dark mb-2">Niste sigurni u kvar?</h3>
             <p class="text-sm text-slate-600 mb-4">Javite nam se, pomoći ćemo vam da utvrdimo problem i dogovorimo izlazak.</p>
             <button data-service="home" class="js-open-modal inline-flex items-center justify-center gap-2 rounded-lg bg-brand-blue px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-dark w-full sm:w-auto shadow-md">
-              <i data-lucide="wrench" class="h-4 w-4"></i> Zakaži dijagnostiku
+              <Icon name="wrench" class="h-4 w-4" /> Zakaži dijagnostiku
             </button>
           </div>
         </div>
@@ -106,7 +116,7 @@ import ContactModal from '../components/ContactModal.astro';
             <p class="text-sm text-slate-500 mt-2">Jasna cijena prije rada. Mi nabavljamo rezervne dijelove.</p>
           </div>
           <div class="relative flex flex-col items-center bg-brand-dark p-6 rounded-2xl shadow-md text-white">
-            <div class="h-12 w-12 rounded-full bg-brand-blue text-white flex items-center justify-center mb-4 shadow-md z-10"><i data-lucide="check" class="h-6 w-6"></i></div>
+            <div class="h-12 w-12 rounded-full bg-brand-blue text-white flex items-center justify-center mb-4 shadow-md z-10"><Icon name="check" class="h-6 w-6" /></div>
             <h3 class="text-base font-bold">Popravka sa garancijom</h3>
             <p class="text-sm text-slate-300 mt-2">Fiskalni račun i garancija do 12 mjeseci.</p>
           </div>
@@ -120,21 +130,21 @@ import ContactModal from '../components/ContactModal.astro';
         <div class="grid md:grid-cols-3 gap-8">
           <div class="flex flex-col items-center text-center p-6">
             <span class="grid h-14 w-14 place-items-center rounded-2xl bg-brand-light text-brand-blue mb-4">
-              <i data-lucide="shield-check" class="h-7 w-7"></i>
+              <Icon name="shield-check" class="h-7 w-7" />
             </span>
             <h3 class="text-lg font-bold text-slate-900">Garancija do 12 mjeseci</h3>
             <p class="mt-2 text-sm text-slate-600 leading-relaxed">Na izvršene radove i ugrađene dijelove. Radimo pošteno i pouzdano.</p>
           </div>
           <div class="flex flex-col items-center text-center p-6">
             <span class="grid h-14 w-14 place-items-center rounded-2xl bg-brand-light text-brand-blue mb-4">
-              <i data-lucide="package" class="h-7 w-7"></i>
+              <Icon name="package" class="h-7 w-7" />
             </span>
             <h3 class="text-lg font-bold text-slate-900">Nabavka rezervnih dijelova</h3>
             <p class="mt-2 text-sm text-slate-600 leading-relaxed">Ne morate sami tražiti komponente. Mi pronalazimo i donosimo potrebne dijelove.</p>
           </div>
           <div class="flex flex-col items-center text-center p-6">
             <span class="grid h-14 w-14 place-items-center rounded-2xl bg-brand-light text-brand-blue mb-4">
-              <i data-lucide="receipt" class="h-7 w-7"></i>
+              <Icon name="receipt" class="h-7 w-7" />
             </span>
             <h3 class="text-lg font-bold text-slate-900">Fiskalni račun</h3>
             <p class="mt-2 text-sm text-slate-600 leading-relaxed">Potpuno legalno poslovanje D.O.O. Svaka intervencija je propraćena fiskalnim računom.</p>
@@ -142,7 +152,6 @@ import ContactModal from '../components/ContactModal.astro';
         </div>
       </div>
     </section>
-  </main>
-  <Footer />
-  <ContactModal />
+  <Footer slot="footer" />
+  <ContactModal slot="modal" />
 </Layout>

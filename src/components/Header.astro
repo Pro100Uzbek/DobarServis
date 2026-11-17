@@ -1,4 +1,6 @@
 ---
+import Icon from './Icon.astro';
+
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 const service =
 	pathname === '/kucni-aparati'
@@ -27,7 +29,7 @@ const activeMobileLink = 'block rounded-lg bg-slate-50 px-3 py-2.5 text-sm font-
 				<span
 					class="grid h-10 w-10 place-items-center rounded-lg bg-brand-dark text-white shadow-md group-hover:bg-brand-blue transition-colors"
 				>
-					<i data-lucide="snowflake" class="h-6 w-6"></i>
+					<Icon name="snowflake" class="h-6 w-6" />
 				</span>
 				<span class="leading-tight">
 					<span class="block text-base font-extrabold tracking-wide text-brand-dark sm:text-lg">
@@ -44,25 +46,25 @@ const activeMobileLink = 'block rounded-lg bg-slate-50 px-3 py-2.5 text-sm font-
 			<nav class="hidden items-center gap-1 lg:flex" aria-label="Glavna navigacija">
 				<a href="/#o-nama" class={inactiveDesktopLink}>O nama</a>
 				<a
-					href="/kucni-aparati"
+					href="/kucni-aparati/"
 					class={pathname === '/kucni-aparati' ? activeDesktopLink : inactiveDesktopLink}
 				>
 					Kućni aparati
 				</a>
 				<a
-					href="/horeca"
+					href="/horeca/"
 					class={pathname === '/horeca' ? activeDesktopLink : inactiveDesktopLink}
 				>
 					HoReCa
 				</a>
 				<a
-					href="/odrzavanje-vila"
+					href="/odrzavanje-vila/"
 					class={pathname === '/odrzavanje-vila' ? activeDesktopLink : inactiveDesktopLink}
 				>
 					Vile i Objekti
 				</a>
 				<a
-					href="/kontakt"
+					href="/kontakt/"
 					class={pathname === '/kontakt' ? activeDesktopLink : inactiveDesktopLink}
 				>
 					Kontakt
@@ -70,12 +72,20 @@ const activeMobileLink = 'block rounded-lg bg-slate-50 px-3 py-2.5 text-sm font-
 			</nav>
 
 			<div class="hidden items-center gap-4 lg:flex">
+				<a
+					href="tel:+38267163499"
+					class="hidden items-center gap-2 text-sm font-semibold text-brand-dark transition hover:text-brand-blue xl:inline-flex"
+				>
+					<Icon name="phone" class="h-4 w-4" />
+					+382 67 163 499
+				</a>
 				<button
 					type="button"
 					data-service={service}
 					class="js-open-modal inline-flex items-center gap-2 rounded-lg bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-blue/20 transition hover:bg-brand-dark"
 				>
-					<i data-lucide="wrench" class="h-4 w-4"></i> Prijavi kvar
+					<Icon name="wrench" class="h-4 w-4" />
+					Prijavi kvar
 				</button>
 			</div>
 
@@ -83,45 +93,85 @@ const activeMobileLink = 'block rounded-lg bg-slate-50 px-3 py-2.5 text-sm font-
 				id="mobile-menu-btn"
 				type="button"
 				class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition hover:bg-slate-50 lg:hidden"
+				aria-label="Otvori meni"
 				aria-expanded="false"
 				aria-controls="mobile-menu"
 			>
-				<i data-lucide="menu" class="h-5 w-5" data-menu-icon="open"></i>
-				<i data-lucide="x" class="hidden h-5 w-5" data-menu-icon="close"></i>
+				<Icon name="menu" class="h-5 w-5" data-menu-icon="open" />
+				<Icon name="x" class="hidden h-5 w-5" data-menu-icon="close" />
 			</button>
 		</div>
 	</div>
 
-	<div id="mobile-menu" class="hidden border-t border-slate-200 bg-white lg:hidden shadow-lg absolute w-full">
+	<div id="mobile-menu" class="absolute hidden w-full border-t border-slate-200 bg-white shadow-lg lg:hidden">
 		<div class="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6">
 			<a href="/#o-nama" class={inactiveMobileLink}>O nama</a>
 			<a
-				href="/kucni-aparati"
+				href="/kucni-aparati/"
 				class={pathname === '/kucni-aparati' ? activeMobileLink : inactiveMobileLink}
 			>
 				Kućni aparati
 			</a>
-			<a href="/horeca" class={pathname === '/horeca' ? activeMobileLink : inactiveMobileLink}>
+			<a href="/horeca/" class={pathname === '/horeca' ? activeMobileLink : inactiveMobileLink}>
 				HoReCa
 			</a>
 			<a
-				href="/odrzavanje-vila"
+				href="/odrzavanje-vila/"
 				class={pathname === '/odrzavanje-vila' ? activeMobileLink : inactiveMobileLink}
 			>
 				Vile i Objekti
 			</a>
-			<a href="/kontakt" class={pathname === '/kontakt' ? activeMobileLink : inactiveMobileLink}>
+			<a href="/kontakt/" class={pathname === '/kontakt' ? activeMobileLink : inactiveMobileLink}>
 				Kontakt
 			</a>
-			<div class="flex items-center justify-between gap-3 border-t border-slate-100 pt-4 mt-2">
+			<div class="mt-2 flex items-center justify-between gap-3 border-t border-slate-100 pt-4">
+				<a
+					href="tel:+38267163499"
+					class="inline-flex items-center gap-2 text-sm font-semibold text-brand-dark"
+				>
+					<Icon name="phone" class="h-4 w-4" />
+					+382 67 163 499
+				</a>
 				<button
 					type="button"
 					data-service={service}
-					class="js-open-modal w-full inline-flex items-center justify-center gap-2 rounded-lg bg-brand-blue px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark"
+					class="js-open-modal inline-flex items-center justify-center gap-2 rounded-lg bg-brand-blue px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark"
 				>
-					<i data-lucide="wrench" class="h-4 w-4"></i> Prijavi kvar
+					<Icon name="wrench" class="h-4 w-4" />
+					Prijavi kvar
 				</button>
 			</div>
 		</div>
 	</div>
 </header>
+
+<script>
+	const menuButton = document.querySelector<HTMLButtonElement>('#mobile-menu-btn');
+	const mobileMenu = document.querySelector<HTMLElement>('#mobile-menu');
+	const openIcon = document.querySelector<SVGElement>('[data-menu-icon="open"]');
+	const closeIcon = document.querySelector<SVGElement>('[data-menu-icon="close"]');
+
+	if (!menuButton || !mobileMenu || !openIcon || !closeIcon) {
+		throw new Error('Mobile navigation elements are missing from Header.');
+	}
+
+	function setMenuOpen(isOpen: boolean) {
+		mobileMenu.classList.toggle('hidden', !isOpen);
+		openIcon.classList.toggle('hidden', isOpen);
+		closeIcon.classList.toggle('hidden', !isOpen);
+		menuButton.setAttribute('aria-expanded', String(isOpen));
+		menuButton.setAttribute('aria-label', isOpen ? 'Zatvori meni' : 'Otvori meni');
+	}
+
+	menuButton.addEventListener('click', () => {
+		setMenuOpen(mobileMenu.classList.contains('hidden'));
+	});
+
+	mobileMenu.querySelectorAll('a').forEach((link) => {
+		link.addEventListener('click', () => setMenuOpen(false));
+	});
+
+	window.addEventListener('resize', () => {
+		if (window.innerWidth >= 1024) setMenuOpen(false);
+	});
+</script>

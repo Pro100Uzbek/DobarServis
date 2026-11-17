@@ -3,14 +3,21 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ContactModal from '../components/ContactModal.astro';
+import { buildSeoConfig } from '../utils/seo';
+
+const seo = buildSeoConfig({
+	title: 'Politika privatnosti | Dobar Servis D.O.O.',
+	description:
+		'Politika privatnosti i zaštita ličnih podataka kompanije Dobar Servis D.O.O. Crna Gora.',
+	path: '/privacy/',
+	lang: 'sr-ME',
+	noindex: true,
+});
 ---
 
-<Layout
-	title="Politika privatnosti | Dobar Servis D.O.O."
-	description="Politika privatnosti i zaštita ličnih podataka kompanije Dobar Servis D.O.O. Crna Gora."
->
-	<Header />
-	<main id="main-content" class="py-16 bg-white">
+<Layout seo={seo}>
+	<Header slot="header" />
+	<div class="py-16 bg-white">
 		<div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
 			<h1 class="text-3xl font-extrabold text-slate-900 sm:text-4xl mb-8">
 				Politika privatnosti
@@ -78,7 +85,7 @@ import ContactModal from '../components/ContactModal.astro';
 				<p class="mt-8 text-xs text-slate-500">Posljednje ažuriranje: 15.11.2026.</p>
 			</div>
 		</div>
-	</main>
-	<Footer />
-	<ContactModal />
+	</div>
+	<Footer slot="footer" />
+	<ContactModal slot="modal" />
 </Layout>

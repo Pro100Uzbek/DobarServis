@@ -1,90 +1,86 @@
 ---
+import Icon from './Icon.astro';
+
 const year = new Date().getFullYear();
 ---
 
-<footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+<footer class="border-t border-slate-800 bg-slate-900 py-12 text-slate-400">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
 			<div class="lg:col-span-1">
-				<div class="flex items-center gap-3 mb-4">
+				<a href="/" class="mb-4 inline-flex items-center gap-3" aria-label="Dobar Servis — početna">
 					<span class="grid h-8 w-8 place-items-center rounded bg-brand-blue text-white">
-						<i data-lucide="snowflake" class="h-5 w-5"></i>
+						<Icon name="snowflake" class="h-5 w-5" />
 					</span>
 					<span class="text-base font-extrabold tracking-wide text-white">DOBAR SERVIS D.O.O.</span>
-				</div>
-				<p class="text-sm leading-relaxed mb-4">
+				</a>
+				<p class="mb-4 text-sm leading-relaxed">
 					Profesionalni tehnički servis za kućne aparate, HoReCa opremu i održavanje objekata.
 				</p>
-				<div class="text-xs space-y-1 font-mono text-slate-500">
+				<div class="space-y-1 font-mono text-xs text-slate-500">
 					<p>PIB: 03391981</p>
 					<p>IBAN: ME25-540-0000007300724254</p>
 					<p>SWIFT: OPPOMEPG (Erste Banka)</p>
-					<p>Šušanjska bb</p>
+					<p>Šušanjska bb, Bar, Crna Gora</p>
 				</div>
 			</div>
+
 			<div>
-				<h3 class="text-xs font-bold uppercase tracking-[0.18em] text-white mb-4">Usluge</h3>
+				<h2 class="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-white">Usluge</h2>
 				<ul class="space-y-2 text-sm">
-					<li><a href="/kucni-aparati" class="hover:text-white transition">Servis kućnih aparata</a></li>
+					<li><a href="/kucni-aparati/" class="transition hover:text-white">Servis kućnih aparata</a></li>
 					<li>
-						<a href="/horeca" class="hover:text-white transition">
+						<a href="/horeca/" class="transition hover:text-white">
 							HoReCa &amp; komercijalna oprema
 						</a>
 					</li>
 					<li>
-						<a href="/odrzavanje-vila" class="hover:text-white transition">
+						<a href="/odrzavanje-vila/" class="transition hover:text-white">
 							Održavanje vila i objekata
 						</a>
 					</li>
-					<li><a href="/kontakt" class="hover:text-white transition">Kontakt i podrška</a></li>
-					<li><a href="/privacy" class="hover:text-white transition">Politika privatnosti</a></li>
+					<li><a href="/kontakt/" class="transition hover:text-white">Kontakt i podrška</a></li>
+					<li><a href="/privacy/" class="transition hover:text-white">Politika privatnosti</a></li>
 				</ul>
 			</div>
+
 			<div>
-				<h3 class="text-xs font-bold uppercase tracking-[0.18em] text-white mb-4">Kontakt</h3>
+				<h2 class="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-white">Kontakt</h2>
 				<ul class="space-y-3 text-sm">
 					<li class="flex items-center gap-2">
-						<i data-lucide="phone" class="h-4 w-4 text-brand-blue"></i>
-						<a href="tel:+38267163499" class="hover:text-white transition">+382 67 163 499</a>
+						<Icon name="phone" class="h-4 w-4 text-brand-blue" />
+						<a href="tel:+38267163499" class="transition hover:text-white">+382 67 163 499</a>
 					</li>
 					<li class="flex items-center gap-2">
-						<i data-lucide="mail" class="h-4 w-4 text-brand-blue"></i>
-						<a href="mailto:info@dobarservis.com" class="hover:text-white transition">
+						<Icon name="mail" class="h-4 w-4 text-brand-blue" />
+						<a href="mailto:info@dobarservis.com" class="transition hover:text-white">
 							info@dobarservis.com
 						</a>
 					</li>
 					<li class="flex items-center gap-2">
-						<i data-lucide="clock" class="h-4 w-4 text-brand-blue"></i>
+						<Icon name="clock" class="h-4 w-4 text-brand-blue" />
 						<span>Pon–Pet: 08:00–20:00</span>
 					</li>
 					<li class="flex items-center gap-2">
-						<i data-lucide="user" class="h-4 w-4 text-brand-blue"></i>
+						<Icon name="user" class="h-4 w-4 text-brand-blue" />
 						<span>Direktor: Aleksei Beliaev</span>
 					</li>
 				</ul>
 			</div>
+
 			<div>
-				<h3 class="text-xs font-bold uppercase tracking-[0.18em] text-white mb-4">Zone usluga</h3>
+				<h2 class="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-white">Zone usluga</h2>
 				<p class="text-sm leading-relaxed">
-					Ulcinj • Bar • Sutomore • Petrovac • Budva • Tivat • Kotor • Herceg Novi • Podgorica i okolna mjesta prema primorju
+					Ulcinj • Bar • Sutomore • Petrovac • Budva • Tivat • Kotor • Herceg Novi • Podgorica i
+					okolna mjesta prema primorju
 				</p>
 			</div>
 		</div>
+
 		<div
-			class="mt-12 flex flex-col sm:flex-row items-center justify-between border-t border-slate-800 pt-6 text-xs text-slate-600"
+			class="mt-12 flex flex-col items-center justify-between border-t border-slate-800 pt-6 text-xs text-slate-600 sm:flex-row"
 		>
-			<p>© <span id="year">{year}</span> Dobar Servis D.O.O. Sva prava zadržana.</p>
+			<p>© {year} Dobar Servis D.O.O. Sva prava zadržana.</p>
 		</div>
 	</div>
 </footer>
-
-<div
-	class="fixed bottom-0 inset-x-0 z-40 lg:hidden bg-white border-t border-slate-200 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]"
->
-	<a
-		href="tel:+38267163499"
-		class="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-brand-blue py-3.5 text-sm font-bold text-white shadow-md transition active:scale-[0.98]"
-	>
-		<i data-lucide="phone" class="h-5 w-5"></i> Pozovi odmah
-	</a>
-</div>

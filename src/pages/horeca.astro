@@ -1,13 +1,23 @@
 ---
+import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ContactModal from '../components/ContactModal.astro';
+import { buildSeoConfig } from '../utils/seo';
+
+const seo = buildSeoConfig({
+	title: 'HoReCa servis — Popravka opreme za ugostiteljstvo | Dobar Servis',
+	description:
+		'Hitne popravke i redovno održavanje rashladnih vitrina, ledomata i kuhinjskih linija za restorane i hotele. Zapisnik o defektaži, prioritetni izlasci. ☎ +382 67 163 499',
+	path: '/horeca/',
+	lang: 'sr-ME',
+	service: 'horeca',
+});
 ---
 
-<Layout title="HoReCa servis — Popravka opreme za ugostiteljstvo | Dobar Servis" description="Hitne popravke i redovno održavanje rashladnih vitrina, ledomata i kuhinjskih linija za restorane i hotele. Zapisnik o defektaži, prioritetni izlasci. ☎ +382 67 163 499">
-  <Header />
-<main>
+<Layout seo={seo}>
+  <Header slot="header" />
     <!-- HERO -->
     <section class="relative overflow-hidden bg-brand-dark text-white py-16 lg:py-24">
       <div class="pointer-events-none absolute inset-0 opacity-[0.05]" style="background-image:linear-gradient(to right,#fff 1px,transparent 1px),linear-gradient(to bottom,#fff 1px,transparent 1px);background-size:64px 64px;"></div>
@@ -15,16 +25,16 @@ import ContactModal from '../components/ContactModal.astro';
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <span class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/60 px-4 py-1.5 text-xs font-semibold text-slate-300">
-              <i data-lucide="briefcase" class="h-4 w-4 text-brand-blue"></i> Za restorane, hotele i barove • B2B tehnička podrška
+              <Icon name="briefcase" class="h-4 w-4 text-brand-blue" /> Za restorane, hotele i barove • B2B tehnička podrška
             </span>
             <h1 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">Vaša kuhinja i šank ne smiju stati u sred sezone</h1>
             <p class="mt-5 text-lg text-slate-300 leading-relaxed max-w-2xl">Hitne popravke i preventivno održavanje profesionalne ugostiteljske opreme. Rashladne komore i vitrine, ledomati, točionici i linije za kuvanje. Ugovori za pravna lica, bezgotovinsko plaćanje, zapisnici o defektaži i prioritetni izlasci na primorju i u Podgorici.</p>
             <div class="mt-8 flex flex-col sm:flex-row gap-3">
               <button type="button" data-service="horeca" class="js-open-modal inline-flex items-center justify-center gap-2 rounded-xl bg-brand-blue px-6 py-3.5 text-base font-semibold text-white shadow-xl transition hover:bg-blue-500">
-                <i data-lucide="clipboard-list" class="h-5 w-5"></i> Zatražite ponudu za održavanje
+                <Icon name="clipboard-list" class="h-5 w-5" /> Zatražite ponudu za održavanje
               </button>
               <button type="button" data-service="urgent" class="js-open-modal inline-flex items-center justify-center gap-2 rounded-xl border border-slate-600 bg-slate-800/40 px-6 py-3.5 text-base font-semibold text-white transition hover:border-slate-400 hover:bg-slate-700">
-                <i data-lucide="siren" class="h-5 w-5"></i> Hitna intervencija
+                <Icon name="siren" class="h-5 w-5" /> Hitna intervencija
               </button>
             </div>
           </div>
@@ -47,22 +57,22 @@ import ContactModal from '../components/ContactModal.astro';
         </div>
         <div class="grid gap-6 md:grid-cols-2">
           <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col">
-            <i data-lucide="snowflake" class="h-10 w-10 text-brand-blue mb-4"></i>
+            <Icon name="snowflake" class="h-10 w-10 text-brand-blue mb-4" />
             <h3 class="text-lg font-bold text-slate-900">Rashladne vitrine, stolovi i komore</h3>
             <p class="mt-2 text-sm text-slate-600 flex-1">Popravka rashladnih sistema, zamjena kompresora, dopuna freona, kontrola isparivača i digitalnih termostata (Dixell, Eliwell).</p>
           </div>
           <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col">
-            <i data-lucide="beer" class="h-10 w-10 text-brand-blue mb-4"></i>
+            <Icon name="beer" class="h-10 w-10 text-brand-blue mb-4" />
             <h3 class="text-lg font-bold text-slate-900">Ledomati i šank oprema</h3>
             <p class="mt-2 text-sm text-slate-600 flex-1">Servis ledomata svih kapaciteta (Brema, Scotsman i dr.), popravka točionika piva, kontrola CO2 instalacija i rashladnih kada.</p>
           </div>
           <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col">
-            <i data-lucide="flame" class="h-10 w-10 text-brand-blue mb-4"></i>
+            <Icon name="flame" class="h-10 w-10 text-brand-blue mb-4" />
             <h3 class="text-lg font-bold text-slate-900">Termička oprema i peći</h3>
             <p class="mt-2 text-sm text-slate-600 flex-1">Dijagnostika i popravka parokonvekcijskih peći (Rational, Unox), električnih šporeta, friteza, roštilja i toplih kupki.</p>
           </div>
           <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col">
-            <i data-lucide="utensils" class="h-10 w-10 text-brand-blue mb-4"></i>
+            <Icon name="utensils" class="h-10 w-10 text-brand-blue mb-4" />
             <h3 class="text-lg font-bold text-slate-900">Profesionalno pranje sudova i čaša</h3>
             <p class="mt-2 text-sm text-slate-600 flex-1">Industrijske mašine za pranje, zamjena pumpi pritiska, dozatora hemije, grijača i uklanjanje kamenca.</p>
           </div>
@@ -94,7 +104,7 @@ import ContactModal from '../components/ContactModal.astro';
             <p class="text-sm text-slate-500 mt-2">Nabavka industrijskih dijelova i stručna ugradnja.</p>
           </div>
           <div class="relative flex flex-col items-center bg-brand-dark p-6 rounded-2xl shadow-md text-white">
-            <div class="h-12 w-12 rounded-full bg-brand-blue text-white flex items-center justify-center mb-4 shadow-md z-10"><i data-lucide="check" class="h-6 w-6"></i></div>
+            <div class="h-12 w-12 rounded-full bg-brand-blue text-white flex items-center justify-center mb-4 shadow-md z-10"><Icon name="check" class="h-6 w-6" /></div>
             <h3 class="text-base font-bold">Račun i garancija</h3>
             <p class="text-sm text-slate-300 mt-2">Izdavanje fiskalnog računa i garancija do 12 mjeseci.</p>
           </div>
@@ -111,7 +121,7 @@ import ContactModal from '../components/ContactModal.astro';
             <div class="space-y-6">
               <div class="flex items-start gap-4">
                 <span class="grid h-10 w-10 place-items-center rounded-lg bg-brand-light text-brand-blue shrink-0">
-                  <i data-lucide="file-text" class="h-5 w-5"></i>
+                  <Icon name="file-text" class="h-5 w-5" />
                 </span>
                 <div>
                   <h3 class="text-base font-bold text-slate-900">Zapisnik o defektaži</h3>
@@ -120,7 +130,7 @@ import ContactModal from '../components/ContactModal.astro';
               </div>
               <div class="flex items-start gap-4">
                 <span class="grid h-10 w-10 place-items-center rounded-lg bg-brand-light text-brand-blue shrink-0">
-                  <i data-lucide="receipt" class="h-5 w-5"></i>
+                  <Icon name="receipt" class="h-5 w-5" />
                 </span>
                 <div>
                   <h3 class="text-base font-bold text-slate-900">Bezgotovinsko plaćanje i fiskalni račun</h3>
@@ -129,7 +139,7 @@ import ContactModal from '../components/ContactModal.astro';
               </div>
               <div class="flex items-start gap-4">
                 <span class="grid h-10 w-10 place-items-center rounded-lg bg-brand-light text-brand-blue shrink-0">
-                  <i data-lucide="clock" class="h-5 w-5"></i>
+                  <Icon name="clock" class="h-5 w-5" />
                 </span>
                 <div>
                   <h3 class="text-base font-bold text-slate-900">Prioritetni izlasci za ugovorne partnere</h3>
@@ -138,7 +148,7 @@ import ContactModal from '../components/ContactModal.astro';
               </div>
               <div class="flex items-start gap-4">
                 <span class="grid h-10 w-10 place-items-center rounded-lg bg-brand-light text-brand-blue shrink-0">
-                  <i data-lucide="calendar-check" class="h-5 w-5"></i>
+                  <Icon name="calendar-check" class="h-5 w-5" />
                 </span>
                 <div>
                   <h3 class="text-base font-bold text-slate-900">Preventivni pregledi prije sezone</h3>
@@ -153,25 +163,24 @@ import ContactModal from '../components/ContactModal.astro';
             <p class="text-sm text-slate-600 mb-6">Svaka intervencija završava se izdavanjem fiskalnog računa i zvanične garancije. Radimo u skladu sa zakonima Crne Gore.</p>
             <div class="space-y-3">
               <div class="flex items-center gap-2 text-sm font-medium text-slate-700 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
-                <i data-lucide="shield-check" class="h-4 w-4 text-brand-blue"></i> Garancija do 12 mjeseci
+                <Icon name="shield-check" class="h-4 w-4 text-brand-blue" /> Garancija do 12 mjeseci
               </div>
               <div class="flex items-center gap-2 text-sm font-medium text-slate-700 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
-                <i data-lucide="file-check" class="h-4 w-4 text-brand-blue"></i> Zapisnik o defektaži
+                <Icon name="file-check" class="h-4 w-4 text-brand-blue" /> Zapisnik o defektaži
               </div>
               <div class="flex items-center gap-2 text-sm font-medium text-slate-700 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
-                <i data-lucide="credit-card" class="h-4 w-4 text-brand-blue"></i> Virmansko plaćanje
+                <Icon name="credit-card" class="h-4 w-4 text-brand-blue" /> Virmansko plaćanje
               </div>
             </div>
             <div class="mt-6 pt-6 border-t border-slate-200">
                <button type="button" data-service="horeca" class="js-open-modal w-full inline-flex items-center justify-center gap-2 rounded-lg bg-brand-blue px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-dark">
-                <i data-lucide="phone" class="h-4 w-4"></i> Kontaktirajte nas za ugovor
+                <Icon name="phone" class="h-4 w-4" /> Kontaktirajte nas za ugovor
               </button>
             </div>
           </div>
         </div>
       </div>
     </section>
-  </main>
-  <Footer />
-  <ContactModal />
+  <Footer slot="footer" />
+  <ContactModal slot="modal" />
 </Layout>

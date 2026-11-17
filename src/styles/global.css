@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-	--color-brand-dark: #0b1f4b;
-	--color-brand-blue: #1e74bb;
-	--color-brand-light: #e8f1f8;
+	--color-brand-dark: #0B1F4B;
+	--color-brand-blue: #1E74BB;
+	--color-brand-light: #E8F1F8;
+	--font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
 
 @keyframes marquee {
